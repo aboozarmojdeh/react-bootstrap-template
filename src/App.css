@@ -63,6 +63,13 @@ body {
   padding: 40px!important;
   min-height: 600px;
 }
+
+
+
+
+
+
+
 /* card */
 /*  */
 
@@ -85,6 +92,39 @@ body {
     padding: 10px;
 }
 
+/* side bar widgets */
+.sponsor-widget {
+  background-color: #dbdbdb;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+};
+
+.sponsor-widget .sponsor-logo-123 .sponsor-card {
+  margin-top: 20px;
+};
+
+.sponsor-widget .sponsor-logo-123 .sponsor-card a {
+  display: grid;
+  grid-template-columns: 60px auto;
+  text-decoration: none;
+};
+
+
+.sponsor-widget .sponsor-logo-123 .sponsor-card a .sponsor-details {
+  padding: 0 10px;
+}
+.sponsor-widget .sponsor-logo-123 .sponsor-card a img {
+  width: 80px;
+  height: 60px;
+};
+
+
+.newsletter-form {
+  background-color: #dbdbdb;
+}
+/* card */
+/*  */
 .card {
   border-radius: 8px;
   overflow: hidden;
@@ -218,6 +258,9 @@ hr {
   text-align: center;
   margin: 30px 0;
 };
+
+
+
 
 
 /* media query */

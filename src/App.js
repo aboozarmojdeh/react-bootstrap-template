@@ -253,7 +253,73 @@ class App extends Component {
                 </div>
               </div>
             </div>
-            <div className='col-md-3 col-sm-12 col-12'>b</div>
+            <div className='col-md-3 col-sm-12 col-12'>
+              <div className='container sponsor-widget' style={{backgroundColor: '#dbdbdb'}}>
+                <h4 className="title">Our Sponsor</h4>
+                <div className="sponsor-logo-123">
+                  <div className="row">
+                    <div className="col">
+                      <div className="sponsor-card">
+                        <a href="https://google.com/" target="_blank" rel="noopener noreferrer">
+                          <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google" />
+                          <div className="sponsor-details">
+                            <div className="sponsor-name">Google</div>
+                            <div className="about-sponsor">The best newsletters for makers, founders, and curious minds.</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="sponsor-card">
+                        <a href="https://webflow.com/?rfsn=3196755.b01058" target="_blank" rel="noopener noreferrer">
+                          <img src="https://s.yimg.com/rz/p/yahoo_frontpage_en-US_s_f_p_205x58_frontpage_2x.png" alt="Webflow" />
+                          <div class="sponsor-details">
+                            <div class="sponsor-name">Webflow</div>
+                            <div class="about-sponsor">Build better business websites, faster. Without coding.</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                    <div className="col">
+                      <div className="sponsor-card">
+                        <a href="https://s.yimg.com/rz/p/yahoo_frontpage_en-US_s_f_p_205x58_frontpage_2x.png" target="_blank" rel="noopener noreferrer">
+                          <img src="https://f0.pngfuel.com/png/497/515/facebook-scalable-graphics-icon-facebook-logo-facebook-logo-png-clip-art.png" alt="VS Code Pro" />
+                          <div className="sponsor-details">
+                            <div className="sponsor-name">VSCode Power User</div>
+                            <div className="about-sponsor">VSCode Power User is the best course to become the master of VS Code Editor.</div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                </div>
+                <hr />
+                <small>Please reach out to us to sponsor our efforts in helping the community</small>
+                <br />
+                <a className="support-btn" href="/sponsor">Sponsor Us</a>
+              </div>
+              <div className="container newsletter-form" style={{backgroundColor: '#dbdbdb'}}>
+                <form className="">
+                  <div className="form-group">
+                    <label className="title form-label" for="email">
+                      Newsletter</label>
+                    <br />
+                    <small className="sub-title">Get weekly updates for new APIs.</small>
+                    <input placeholder="Enter email" type="email" id="email" class="form-control" value="" />
+                    <small className="text-muted form-text">We'll never share your email with anyone else.</small>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Subscribe</button>
+                  <div className="warning-msg"> </div>
+                  <div className="warning-success"> </div>
+                </form>
+              </div>
+              <div className="container" style={{backgroundColor: '#dbdbdb',margin:'10px auto'}}>2</div>
+              <div className="container" style={{backgroundColor: '#dbdbdb',margin:'10px auto'}}>3</div>
+              <div className="container" style={{backgroundColor: '#dbdbdb',margin:'10px auto'}}>4</div>
+              <div className="container" style={{backgroundColor: '#dbdbdb',margin:'10px auto'}}>5</div>
+            </div>
           </div>
 
         </main>
