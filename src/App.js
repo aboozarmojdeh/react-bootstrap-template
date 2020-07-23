@@ -237,7 +237,21 @@ class App extends Component {
                   </div>
                 </div>
               </div>
-              <div className='pagination-div'></div>
+              <div className='pagination-div'>
+                <div className='pagination-item'>
+                  <ul>
+                    <li className='active'>
+                      <a href='https://www.google.com'>1</a>
+                    </li>
+                    <li>
+                      <a href='https://www.google.com'>2</a>
+                    </li>
+                    <li>
+                      <a href='https://www.google.com'>3</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
             <div className='col-md-3 col-sm-12 col-12'>b</div>
           </div>

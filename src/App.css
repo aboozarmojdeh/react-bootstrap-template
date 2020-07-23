@@ -201,6 +201,25 @@ hr {
   border-radius: 4px;
 };
 
+.pagination-div .pagination-item ul li.active {
+  border: 1px solid #010101;
+}
+.pagination-div .pagination-item ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 10px 15px;
+}
+
+.pagination-div .pagination-item ul li.active {
+  border: 1px solid #010101;
+}
+
+.pagination-div {
+  text-align: center;
+  margin: 30px 0;
+};
+
+
 /* media query */
 @media (min-width: 768px){
 .col-md-4 {
