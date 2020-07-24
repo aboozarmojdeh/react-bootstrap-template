@@ -121,7 +121,8 @@ body {
 
 
 .newsletter-form {
-  background-color: #dbdbdb;
+  background-color: red;
+  border-radius: 10px;
 }
 /* card */
 /*  */
