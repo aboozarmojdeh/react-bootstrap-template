@@ -11,6 +11,7 @@ import Sidebar3 from './components/Sidebar3';
 import Newsletter from './components/Newsletter';
 import SearchBox from './components/SearchBox';
 import CardList from './components/CardList';
+import TMDBcard from './components/TMDBcard/TMDBcard';
 
 
 
@@ -40,6 +41,8 @@ componentDidMount(){
     console.log(this.state)
     console.log(event.target.value)
   }
+
+  
 
   render() {
     const filteredCats=this.state.cats.filter((cat)=>{
@@ -77,6 +80,7 @@ componentDidMount(){
               <Pagination />
             </div>
             <div className='col-md-3 col-sm-12 col-12'>
+              <TMDBcard />
               <Sidebar1 />
               <Newsletter />
               <Sidebar2 />
