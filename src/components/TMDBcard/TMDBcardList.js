@@ -9,7 +9,7 @@ const TMDBcardList = ({ movies }) => {
         return (
             <TMDBcard 
             key={movie.id} 
-            id={movie.id} 
+            MovieId={movie.id} 
             popularity={movie.popularity} 
             voteCount={movie.vote_count}
             voteAverage={movie.vote_average}

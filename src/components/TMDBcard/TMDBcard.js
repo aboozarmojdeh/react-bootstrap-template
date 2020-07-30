@@ -1,14 +1,22 @@
 import React from 'react';
 import './TMDBcard.css';
-import Hr from '../Hr';
+// import Hr from '../Hr';
+
 
 const TMDBcard = (props) => {
+
+  // const imageBGUrl=`url('http://image.tmdb.org/t/p/w400${props.movieBGPath}')`;
+  // console.log('BG',imageBGUrl)
+const movieName=`${props.movieTitle}`.split(' ').join('-');
+  const movieLink=`https://www.themoviedb.org/movie/${props.MovieId}-${movieName}`
+  // console.log(movieLink)
   return (
     <div>
     
-      <div className="zone blue grid-wrapper">
-        <div className="box zone movie-image-wrapper"><img src={`http://image.tmdb.org/t/p/w300/${props.moviePosterPath}`} alt="movieImage" /></div>
-        <div className="box zone movie-text-wrapper">
+      <div className="grid-wrapper">
+        <div className="box movie-image-wrapper">
+          <img className='zone' src={`http://image.tmdb.org/t/p/w300${props.moviePosterPath}`} alt="movieImage" /></div>
+        <div className="box movie-text-wrapper">
           <div className='movie-title'>
             <h2>{props.movieTitle}</h2>
             <h6>Release Date: {props.movieDate}</h6>
@@ -21,10 +29,15 @@ const TMDBcard = (props) => {
             </ul>
             <h3>Overview</h3>
             <p>{props.movieOverview}</p>
-            <br />
-            <small>more information on </small>
-      <br />
-      <a href="https://www.themoviedb.org/" target='_blank' rel="noopener noreferrer">TMDB</a>
+            <hr style={{height:'1px', border:'none', color:'#fff', backgroundColor:'#fff', width:'80%', textAlign:'center'}}/>
+            
+                      
+            <small>  
+              <a href={movieLink} target='_blank' rel="noopener noreferrer">More information...</a>
+              </small>
+            
+      
+      
           </div>
         </div>
         
