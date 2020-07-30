@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TMDBcard from './TMDBcard';
+import WidgetHeader from '../WidgetHeader/WidgetHeader';
 
 const TMDBcardList = ({ movies }) => {
 
@@ -12,7 +13,7 @@ const TMDBcardList = ({ movies }) => {
             popularity={movie.popularity} 
             voteCount={movie.vote_count}
             voteAverage={movie.vote_average}
-            movieLanguage={movie.language}
+            movieLanguage={movie.original_language}
             movieTitle={movie.title}
             movieOverview={movie.overview}
             movieDate={movie.release_date}
@@ -27,6 +28,7 @@ const TMDBcardList = ({ movies }) => {
     
     return (
         <div>
+            <WidgetHeader widgetHeaderLink={`https://www.themoviedb.org/`} widgetHeaderText={`The 5 most popular movies on TMDB`}/>
             {TMDBcardArray}
         </div>
 

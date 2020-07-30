@@ -1,0 +1,10 @@
+.widget-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    background-color: #dbdbdb;
+    padding: 6px;
+    color: #000;
+    font-size: 15px;
+    border-radius: 5px;
+  }

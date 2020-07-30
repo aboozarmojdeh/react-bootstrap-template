@@ -71,21 +71,21 @@ class App extends Component {
       <div className="App container-fluid main-container">
         <main>
           <div className='row'>
-            <div className='col-md-9 col-sm-12 col-12'>
+            <div className='col-md-6 col-sm-12 col-12'>
               <div>
-                <Banner />
+                <Banner bannerText={`Enter Your Banner Text`}/>
                 <SearchBox onSearchChange={this.onSearchChange} />
                 <div className='pinned-apis'>
 
                   <CardList cats={filteredCats} />
 
                 </div>
-                <br />
+                {/* <br />
                 <Hr />
-                <Divider />
+                <Divider /> */}
               </div>
               <br />
-              <div className='row'>
+              {/* <div className='row'>
                 <Card />
                 <Card />
                 <Card />
@@ -93,17 +93,17 @@ class App extends Component {
                 <Card />
                 <Card />
                 <Card />
-              </div>
-              <Pagination />
+              </div> */}
+              {/* <Pagination /> */}
             </div>
-            <div className='col-md-3 col-sm-12 col-12'>
+            <div className='col-md-6 col-sm-12 col-12'>
               <Scroll>
                 <TMDBcardList movies={filteredMovies} />
               </Scroll>
-              <Sidebar1 />
+              {/* <Sidebar1 />
               <Newsletter />
               <Sidebar2 />
-              <Sidebar3 />
+              <Sidebar3 /> */}
 
             </div>
           </div>
