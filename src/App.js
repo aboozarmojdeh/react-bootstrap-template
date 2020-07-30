@@ -11,7 +11,11 @@ import Sidebar3 from './components/Sidebar3';
 import Newsletter from './components/Newsletter';
 import SearchBox from './components/SearchBox';
 import CardList from './components/CardList';
-import TMDBcard from './components/TMDBcard/TMDBcard';
+// import TMDBcard from './components/TMDBcard/TMDBcard';
+import TMDBcardList from './components/TMDBcard/TMDBcardList';
+import Scroll from './components/Scroll/Scroll';
+import {TMDBapi} from './components/TMDBcard/TMDBapi';
+
 
 
 
@@ -23,33 +27,46 @@ class App extends Component {
     super()
     this.state = {
       cats: [],
-      searchField: ''
+      searchField: '',
+      movies: []
 
     }
   }
 
-componentDidMount(){
-  fetch('https://jsonplaceholder.typicode.com/users')
-  .then(response=>response.json())
-  .then(data=>this.setState({cats:data}))
- 
-}
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => this.setState({ cats: data }));
+
+
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`)
+      .then(response => response.json())
+      .then(data => this.setState({ movies: data.results }))
+    // .then(data=>console.log(data.results.slice(0,5)))
+
+    // console.log(this.state.movies)
+    // console.log(this.state.cats)
+  }
 
 
   onSearchChange = (event) => {
     this.setState({ searchField: event.target.value })
-    console.log(this.state)
-    console.log(event.target.value)
+    // console.log(this.state)
+    // console.log(event.target.value)
   }
 
-  
+
 
   render() {
-    const filteredCats=this.state.cats.filter((cat)=>{
+    const filteredCats = this.state.cats.filter((cat) => {
       return (
         cat.name.toLowerCase().includes(this.state.searchField.toLowerCase())
-    )
-    })
+      )
+    });
+
+
+    const filteredMovies = this.state.movies.slice(0, 5);
+
     return (
       <div className="App container-fluid main-container">
         <main>
@@ -59,9 +76,9 @@ componentDidMount(){
                 <Banner />
                 <SearchBox onSearchChange={this.onSearchChange} />
                 <div className='pinned-apis'>
-                  
-                    <CardList cats={filteredCats}/>
-                   
+
+                  <CardList cats={filteredCats} />
+
                 </div>
                 <br />
                 <Hr />
@@ -80,7 +97,9 @@ componentDidMount(){
               <Pagination />
             </div>
             <div className='col-md-3 col-sm-12 col-12'>
-              <TMDBcard />
+              <Scroll>
+                <TMDBcardList movies={filteredMovies} />
+              </Scroll>
               <Sidebar1 />
               <Newsletter />
               <Sidebar2 />

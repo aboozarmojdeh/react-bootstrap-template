@@ -1,0 +1,26 @@
+/* Movie bar widgets */
+.movie-widget {
+    background-color: #dbdbdb;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  };
+  
+  .movie-widget .movie-logo-123 .movie-card {
+    margin-top: 20px;
+  };
+  
+  .movie-widget .movie-logo-123 .movie-card a {
+    display: grid;
+    grid-template-columns: 60px auto;
+    text-decoration: none;
+  };
+  
+  
+  .movie-widget .movie-logo-123 .movie-card a .movie-details {
+    padding: 0 10px;
+  }
+  .movie-widget .movie-logo-123 .movie-card a img {
+    width: 80px;
+    height: 60px;
+  };
