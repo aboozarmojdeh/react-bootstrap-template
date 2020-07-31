@@ -5,7 +5,7 @@ import './App.css';
 // import Divider from './components/Divider';
 import Banner from './components/Banner';
 // import Pagination from './components/Pagination';
-// import Sidebar1 from './components/Sidebar1';
+import Sidebar1 from './components/Sidebar1';
 // import Sidebar2 from './components/Sidebar2';
 // import Sidebar3 from './components/Sidebar3';
 // import Newsletter from './components/Newsletter';
@@ -100,8 +100,8 @@ class App extends Component {
               <Scroll>
                 <TMDBcardList movies={filteredMovies} />
               </Scroll>
-              {/* <Sidebar1 />
-              <Newsletter />
+               <Sidebar1 />
+             {/* <Newsletter />
               <Sidebar2 />
               <Sidebar3 /> */}
 
