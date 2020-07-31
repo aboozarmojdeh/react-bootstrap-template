@@ -5,16 +5,20 @@ import './App.css';
 // import Divider from './components/Divider';
 import Banner from './components/Banner';
 // import Pagination from './components/Pagination';
-import Sidebar1 from './components/Sidebar1';
+// import Sidebar1 from './components/Sidebar1';
 // import Sidebar2 from './components/Sidebar2';
 // import Sidebar3 from './components/Sidebar3';
 // import Newsletter from './components/Newsletter';
 import SearchBox from './components/SearchBox';
 import CardList from './components/CardList';
 // import TMDBcard from './components/TMDBcard/TMDBcard';
-import TMDBcardList from './components/TMDBcard/TMDBcardList';
+import TMDBMoviecardList from './components/TMDBMoviecard/TMDBMoviecardList';
+import TMDBTVcardList from './components/TMDBTVcard/TMDBTVcardList';
+import NYTcardList from './components/NYTcard/NYTcardList';
+
 import Scroll from './components/Scroll/Scroll';
-import {TMDBapi} from './components/TMDBcard/TMDBapi';
+import {TMDBapi} from './components/TMDBMoviecard/TMDBapi';
+import {NYTapi} from './components/NYTcard/NYTapi';
 
 
 
@@ -28,7 +32,9 @@ class App extends Component {
     this.state = {
       cats: [],
       searchField: '',
-      movies: []
+      movies: [],
+      tvShows:[],
+      nytNews:[]
 
     }
   }
@@ -46,6 +52,18 @@ class App extends Component {
 
     // console.log(this.state.movies)
     // console.log(this.state.cats)
+
+    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`)
+    
+      .then(response => response.json())
+      .then(data => this.setState({ tvShows: data.results }))
+      // .then(data=>console.log(data.results.slice(0,5)))
+      // console.log('kiri',this.state.tvShows)
+
+      fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
+    
+      .then(response => response.json())
+      .then(data => this.setState({ nytNews: data.results }))
   }
 
 
@@ -66,6 +84,8 @@ class App extends Component {
 
 
     const filteredMovies = this.state.movies.slice(0, 5);
+    const filteredTVshows=this.state.tvShows.slice(0, 5);
+    const filteredNews=this.state.nytNews.slice(0, 5)
 
     return (
       <div className="App container-fluid main-container">
@@ -98,9 +118,11 @@ class App extends Component {
             </div>
             <div className='col-md-6 col-sm-12 col-12'>
               <Scroll>
-                <TMDBcardList movies={filteredMovies} />
+                {/* <TMDBMoviecardList movies={filteredMovies} /> */}
+                {/* <TMDBTVcardList tvShows={filteredTVshows} /> */}
+                <NYTcardList news={filteredNews}/>
               </Scroll>
-               <Sidebar1 />
+               {/* <Sidebar1 /> */}
              {/* <Newsletter />
               <Sidebar2 />
               <Sidebar3 /> */}

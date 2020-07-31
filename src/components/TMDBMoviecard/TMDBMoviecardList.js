@@ -1,13 +1,13 @@
 import React from 'react';
 
-import TMDBcard from './TMDBcard';
+import TMDBMoviecard from './TMDBMoviecard';
 import WidgetHeader from '../WidgetHeader/WidgetHeader';
 
-const TMDBcardList = ({ movies }) => {
+const TMDBMoviecardList = ({ movies }) => {
 
-    const TMDBcardArray = movies.map((movie, i) => {
+    const TMDBMoviecardArray = movies.map((movie, i) => {
         return (
-            <TMDBcard 
+            <TMDBMoviecard 
             key={movie.id} 
             MovieId={movie.id} 
             popularity={movie.popularity} 
@@ -29,11 +29,11 @@ const TMDBcardList = ({ movies }) => {
     return (
         <div>
             <WidgetHeader widgetHeaderLink={`https://www.themoviedb.org/`} widgetHeaderText={`The 5 most popular movies on TMDB`}/>
-            {TMDBcardArray}
+            {TMDBMoviecardArray}
         </div>
 
 
     )
 }
 
-export default TMDBcardList;
+export default TMDBMoviecardList;
