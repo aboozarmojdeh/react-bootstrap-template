@@ -15,6 +15,7 @@ import CardList from './components/CardList';
 import TMDBMoviecardList from './components/TMDBMoviecard/TMDBMoviecardList';
 import TMDBTVcardList from './components/TMDBTVcard/TMDBTVcardList';
 import NYTcardList from './components/NYTcard/NYTcardList';
+import Quotecard from './components/Quotecard/Quotecard';
 
 import Scroll from './components/Scroll/Scroll';
 import {TMDBapi} from './components/TMDBMoviecard/TMDBapi';
@@ -34,12 +35,17 @@ class App extends Component {
       searchField: '',
       movies: [],
       tvShows:[],
-      nytNews:[]
+      nytNews:[],
+      quotes:[],
+      isLoading: false
 
     }
   }
 
+  
+
   componentDidMount() {
+    this.setState({ isLoading: true });
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
       .then(data => this.setState({ cats: data }));
@@ -48,8 +54,9 @@ class App extends Component {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`)
       .then(response => response.json())
       .then(data => this.setState({ movies: data.results }))
+    
+    
     // .then(data=>console.log(data.results.slice(0,5)))
-
     // console.log(this.state.movies)
     // console.log(this.state.cats)
 
@@ -57,13 +64,22 @@ class App extends Component {
     
       .then(response => response.json())
       .then(data => this.setState({ tvShows: data.results }))
-      // .then(data=>console.log(data.results.slice(0,5)))
+     
+    // .then(data=>console.log(data.results.slice(0,5)))
       // console.log('kiri',this.state.tvShows)
 
       fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
     
       .then(response => response.json())
       .then(data => this.setState({ nytNews: data.results }))
+ 
+     
+      fetch(`https://type.fit/api/quotes`)
+  .then(response => response.json())
+ .then(data => this.setState({ quotes: data,isLoading: false }))
+    // .then(data => console.log(data))
+      
+
   }
 
 
@@ -76,6 +92,10 @@ class App extends Component {
 
 
   render() {
+    if (this.state.isLoading) {
+      return <p>Loading ...</p>;
+    }
+
     const filteredCats = this.state.cats.filter((cat) => {
       return (
         cat.name.toLowerCase().includes(this.state.searchField.toLowerCase())
@@ -85,7 +105,20 @@ class App extends Component {
 
     const filteredMovies = this.state.movies.slice(0, 5);
     const filteredTVshows=this.state.tvShows.slice(0, 5);
-    const filteredNews=this.state.nytNews.slice(0, 5)
+    const filteredNews=this.state.nytNews.slice(0, 5);
+    
+    let randomNumber=Math.floor(Math.random()*1644);
+    const randQuoteText=this.state.quotes[randomNumber];
+    console.log(randQuoteText.text)
+    // const randQuoteAuthor=this.state.quotes[randomNumber];
+    
+    
+    
+    // ()=>{
+    //   const quotesNumber=1644;
+    //   let randNumber=Math.floor(Math.random()*quotesNumber);
+    //   return this.state.quotes[0]
+    // }
 
     return (
       <div className="App container-fluid main-container">
@@ -94,6 +127,7 @@ class App extends Component {
             <div className='col-md-6 col-sm-12 col-12'>
               <div>
                 <Banner bannerText={`Enter Your Banner Text`}/>
+                <Quotecard />
                 <SearchBox onSearchChange={this.onSearchChange} />
                 <div className='pinned-apis'>
 

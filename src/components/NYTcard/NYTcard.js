@@ -58,7 +58,7 @@ const NYTcard = (props) => {
 
       <div className="grid-wrapper" style={{ backgroundColor: randColor }}>
         <div className="box movie-image-wrapper">
-          <img style={{width:'450px',height:'auto'}} className='zone' src={props.newsImage} alt="newsImage" /></div>
+          <img style={{width:'300px',height:'auto'}} className='zone' src={props.newsImage} alt="newsImage" /></div>
         <div className="box movie-text-wrapper" style={{ color: contrast(randColor) }}>
           <div className='movie-title'>
             <h2>{props.newsTitle}</h2>

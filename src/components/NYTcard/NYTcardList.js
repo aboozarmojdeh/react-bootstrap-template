@@ -8,7 +8,7 @@ const NYTcardList = ({ news }) => {
     const TMDBMoviecardArray = news.map((eachNews, i) => {
         return (
             <NYTcard 
-            key={eachNews.id} 
+            key={eachNews.uri} 
             newsId={eachNews.uri} 
             newsTitle={eachNews.title}
             newsAbstract={eachNews.abstract} 
