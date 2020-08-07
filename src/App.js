@@ -16,6 +16,7 @@ import CardList from './components/CardList';
 import TMDBMoviecardList from './components/TMDBMoviecard/TMDBMoviecardList';
 import TMDBTVcardList from './components/TMDBTVcard/TMDBTVcardList';
 import NYTcardList from './components/NYTcard/NYTcardList';
+import Socialcard from './components/Socialcard/Socialcard';
 import Quotecard from './components/Quotecard/Quotecard';
 
 import Scroll from './components/Scroll/Scroll';
@@ -47,32 +48,32 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(data => this.setState({ cats: data }));
+    // fetch('https://jsonplaceholder.typicode.com/users')
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ cats: data }));
 
 
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`)
-      .then(response => response.json())
-      .then(data => this.setState({ movies: data.results }))
+    // fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`)
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ movies: data.results }))
 
 
     // .then(data=>console.log(data.results.slice(0,5)))
     // console.log(this.state.movies)
     // console.log(this.state.cats)
 
-    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`)
+    // fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`)
 
-      .then(response => response.json())
-      .then(data => this.setState({ tvShows: data.results }))
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ tvShows: data.results }))
 
     // .then(data=>console.log(data.results.slice(0,5)))
     // console.log('kiri',this.state.tvShows)
 
-    fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
+    // fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
 
-      .then(response => response.json())
-      .then(data => this.setState({ nytNews: data.results }))
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ nytNews: data.results }))
 
 
     fetch(`https://type.fit/api/quotes`)
@@ -121,7 +122,7 @@ class App extends Component {
         <div className="App container-fluid main-container">
           <main>
             <div className='row'>
-              <div className='col-md-6 col-sm-12 col-12'>
+              <div className='col-md-6 col-sm-12 col-12 padding-class'>
                 <div>
                   <Banner bannerText={`Enter Your Banner Text`} />
                   <Quotecard dailyQuote={randQuote} />
@@ -147,7 +148,7 @@ class App extends Component {
               </div> */}
                 {/* <Pagination /> */}
               </div>
-              <div className='col-md-4 col-sm-12 col-12'>
+              <div className='col-md-5 col-sm-12 col-12 padding-class'>
                 <Scroll>
                   {/* <TMDBMoviecardList movies={filteredMovies} /> */}
                   <TMDBTVcardList tvShows={filteredTVshows} />
@@ -159,9 +160,9 @@ class App extends Component {
               <Sidebar3 /> */}
 
               </div>
-              <div className='col-md-2 col-sm-12 col-12'>
+              <div className='col-md-1 col-sm-12 col-12 padding-class'>
                
-              <h1>Side bar</h1>
+              <Socialcard />
 
               </div>
             </div>

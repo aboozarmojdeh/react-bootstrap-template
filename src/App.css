@@ -13,7 +13,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.padding-class{
+  padding-right:5px !important;
+  padding-left:5px !important;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -60,7 +63,7 @@ body {
 
 
 .main-container{
-  padding: 40px!important;
+  padding: 20px!important;
   min-height: 600px;
 }
 

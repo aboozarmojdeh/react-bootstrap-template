@@ -1,0 +1,50 @@
+.social-container{
+    border:1px solid;
+    border-radius: 4px;
+}
+/* .social-header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 5px;
+    padding: 6px;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 5px;
+    background: rgb(29,161,242);
+    background: linear-gradient(90deg, rgba(29,161,242,1) 0%, rgba(220,75,62,1) 100%);
+  } */
+
+
+.facebook{
+    color:#405D9A;
+    background-color: #000;
+}
+
+
+ /* Grid Panel */
+
+ /* .social-grid-wrapper {
+    
+    display: grid;
+    grid-template-columns: auto auto auto;
+    border-radius: 4px;
+    background-color: #2196F3;
+    padding: 10px;
+    justify-items: stretch;
+} */
+
+/* .social-box {
+    background-color: #444;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    
+} */
+
+
+
+/* *********************************************************************** */
+
+
+  
