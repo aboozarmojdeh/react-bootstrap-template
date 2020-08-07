@@ -12,7 +12,6 @@
 ##### weather report
 ##### exchange rate
 ##### wordsapi
-##### email and social netword panel
 ##### API panel
 ##### holidays
 ##### worldometers.info

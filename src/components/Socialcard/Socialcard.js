@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
-import { FaFacebookF } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import './Socialcard.css';
 
 
@@ -12,14 +12,22 @@ const Socialcard = () => {
         
             <div className="container social-container">
                 <div className="row">
-                    <div className="col-sm facebook">
-                        <a href='https://www.facebook.com/' target='_blank' rel="noopener noreferrer"><FaFacebookF /></a>
+                    <div className="col-sm">
+                        <a href='https://www.facebook.com/' target='_blank' rel="noopener noreferrer"><FaFacebookF className='facebook' /></a>
                     </div>
                     <div className="col-sm">
-                        <FaFacebookF />
+                    <a href='https://twitter.com/' target='_blank' rel="noopener noreferrer"><FaTwitter className='twitter'/></a>
+                        
                     </div>
                     <div className="col-sm">
-                        <FaFacebookF />
+                    <a href='https://www.instagram.com/' target='_blank' rel="noopener noreferrer"><FaInstagram className='instagram'/></a>
+                        
+                    </div>
+                    <div className="col-sm instagram">
+                        <FaInstagram />
+                    </div>
+                    <div className="col-sm instagram">
+                        <FaInstagram />
                     </div>
                 </div>
             

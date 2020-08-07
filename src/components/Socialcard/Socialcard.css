@@ -1,6 +1,10 @@
 .social-container{
+    
     border:1px solid;
     border-radius: 4px;
+    
+    
+    font-size:1.2rem;
 }
 /* .social-header {
     display: flex;
@@ -15,10 +19,31 @@
     background: linear-gradient(90deg, rgba(29,161,242,1) 0%, rgba(220,75,62,1) 100%);
   } */
 
-
+.btn{
+   
+}
 .facebook{
     color:#405D9A;
-    background-color: #000;
+    /* background-color: #000; */
+    border-right:1px solid black;
+    text-align: center;
+   
+}
+
+.twitter{
+    color:#71C9F8;
+    /* background-color: #000; */
+    border-right:1px solid black;
+}
+
+.instagram {
+
+/* background: #d6249f; */
+  color: #E1306C
+}
+
+.col-sm{
+    text-align: center; 
 }
 
 
