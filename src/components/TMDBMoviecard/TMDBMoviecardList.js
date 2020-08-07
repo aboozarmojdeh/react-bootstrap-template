@@ -5,6 +5,7 @@ import WidgetHeader from '../WidgetHeader/WidgetHeader';
 
 const TMDBMoviecardList = ({ movies }) => {
 
+
     const TMDBMoviecardArray = movies.map((movie, i) => {
         return (
             <TMDBMoviecard 
@@ -25,7 +26,7 @@ const TMDBMoviecardList = ({ movies }) => {
         )
     });
 
-    
+    // const tMDBLogo=`https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg`;
     return (
         <div>
             <WidgetHeader widgetHeaderLink={`https://www.themoviedb.org/`} widgetHeaderText={`The 5 most popular movies on TMDB`}/>

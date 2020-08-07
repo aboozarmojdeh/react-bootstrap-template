@@ -4,7 +4,7 @@ import './Quotecard.css';
 
 
 
-const Quotecard=(props)=>{
+const Quotecard=({dailyQuote})=>{
     return(
         <div className="card">
         <div className="card-header header-bg">
@@ -12,8 +12,8 @@ const Quotecard=(props)=>{
         </div>
         <div className="card-body">
           <blockquote className="blockquote mb-0">
-            <p>{}</p>
-            <footer className="blockquote-footer">Someone famous in <cite title="Source Title">{}</cite></footer>
+            <p>{dailyQuote.text}</p>
+            <footer className="blockquote-footer"><cite title="Source Title">{dailyQuote.author}</cite></footer>
           </blockquote>
         </div>
       </div>

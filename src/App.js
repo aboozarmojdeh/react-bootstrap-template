@@ -9,6 +9,7 @@ import Banner from './components/Banner';
 // import Sidebar2 from './components/Sidebar2';
 // import Sidebar3 from './components/Sidebar3';
 // import Newsletter from './components/Newsletter';
+import Loading from './components/Loading/Loading';
 import SearchBox from './components/SearchBox';
 import CardList from './components/CardList';
 // import TMDBcard from './components/TMDBcard/TMDBcard';
@@ -18,8 +19,8 @@ import NYTcardList from './components/NYTcard/NYTcardList';
 import Quotecard from './components/Quotecard/Quotecard';
 
 import Scroll from './components/Scroll/Scroll';
-import {TMDBapi} from './components/TMDBMoviecard/TMDBapi';
-import {NYTapi} from './components/NYTcard/NYTapi';
+import { TMDBapi } from './components/TMDBMoviecard/TMDBapi';
+import { NYTapi } from './components/NYTcard/NYTapi';
 
 
 
@@ -34,15 +35,15 @@ class App extends Component {
       cats: [],
       searchField: '',
       movies: [],
-      tvShows:[],
-      nytNews:[],
-      quotes:[],
-      isLoading: false
+      tvShows: [],
+      nytNews: [],
+      quotes: []
+
 
     }
   }
 
-  
+
 
   componentDidMount() {
     this.setState({ isLoading: true });
@@ -54,31 +55,31 @@ class App extends Component {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`)
       .then(response => response.json())
       .then(data => this.setState({ movies: data.results }))
-    
-    
+
+
     // .then(data=>console.log(data.results.slice(0,5)))
     // console.log(this.state.movies)
     // console.log(this.state.cats)
 
     fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`)
-    
+
       .then(response => response.json())
       .then(data => this.setState({ tvShows: data.results }))
-     
-    // .then(data=>console.log(data.results.slice(0,5)))
-      // console.log('kiri',this.state.tvShows)
 
-      fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
-    
+    // .then(data=>console.log(data.results.slice(0,5)))
+    // console.log('kiri',this.state.tvShows)
+
+    fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
+
       .then(response => response.json())
       .then(data => this.setState({ nytNews: data.results }))
- 
-     
-      fetch(`https://type.fit/api/quotes`)
-  .then(response => response.json())
- .then(data => this.setState({ quotes: data,isLoading: false }))
-    // .then(data => console.log(data))
-      
+
+
+    fetch(`https://type.fit/api/quotes`)
+      .then(response => response.json())
+      .then(data => this.setState({ quotes: data }))
+    
+
 
   }
 
@@ -92,9 +93,6 @@ class App extends Component {
 
 
   render() {
-    if (this.state.isLoading) {
-      return <p>Loading ...</p>;
-    }
 
     const filteredCats = this.state.cats.filter((cat) => {
       return (
@@ -102,44 +100,43 @@ class App extends Component {
       )
     });
 
-
+    /////////////
     const filteredMovies = this.state.movies.slice(0, 5);
-    const filteredTVshows=this.state.tvShows.slice(0, 5);
-    const filteredNews=this.state.nytNews.slice(0, 5);
-    
-    let randomNumber=Math.floor(Math.random()*1644);
-    const randQuoteText=this.state.quotes[randomNumber];
-    console.log(randQuoteText.text)
-    // const randQuoteAuthor=this.state.quotes[randomNumber];
-    
-    
-    
-    // ()=>{
-    //   const quotesNumber=1644;
-    //   let randNumber=Math.floor(Math.random()*quotesNumber);
-    //   return this.state.quotes[0]
-    // }
+    ////////////
+    const filteredTVshows = this.state.tvShows.slice(0, 5);
+    /////////////
+    const filteredNews = this.state.nytNews.slice(0, 5);
+    //////////    
+    let randomNumber = Math.floor(Math.random() * 1644);
+    const randQuote = this.state.quotes[randomNumber];
+    /////////////
 
-    return (
-      <div className="App container-fluid main-container">
-        <main>
-          <div className='row'>
-            <div className='col-md-6 col-sm-12 col-12'>
-              <div>
-                <Banner bannerText={`Enter Your Banner Text`}/>
-                <Quotecard />
-                <SearchBox onSearchChange={this.onSearchChange} />
-                <div className='pinned-apis'>
+    if (!this.state.quotes.length) {
+      return (
+       <Loading />
 
-                  <CardList cats={filteredCats} />
+      );
+    } else {
+      return (
+        <div className="App container-fluid main-container">
+          <main>
+            <div className='row'>
+              <div className='col-md-6 col-sm-12 col-12'>
+                <div>
+                  <Banner bannerText={`Enter Your Banner Text`} />
+                  <Quotecard dailyQuote={randQuote} />
+                  <SearchBox onSearchChange={this.onSearchChange} />
+                  <div className='pinned-apis'>
 
-                </div>
-                {/* <br />
+                    <CardList cats={filteredCats} />
+
+                  </div>
+                  {/* <br />
                 <Hr />
                 <Divider /> */}
-              </div>
-              <br />
-              {/* <div className='row'>
+                </div>
+                <br />
+                {/* <div className='row'>
                 <Card />
                 <Card />
                 <Card />
@@ -148,26 +145,32 @@ class App extends Component {
                 <Card />
                 <Card />
               </div> */}
-              {/* <Pagination /> */}
-            </div>
-            <div className='col-md-6 col-sm-12 col-12'>
-              <Scroll>
-                {/* <TMDBMoviecardList movies={filteredMovies} /> */}
-                {/* <TMDBTVcardList tvShows={filteredTVshows} /> */}
-                <NYTcardList news={filteredNews}/>
-              </Scroll>
-               {/* <Sidebar1 /> */}
-             {/* <Newsletter />
+                {/* <Pagination /> */}
+              </div>
+              <div className='col-md-4 col-sm-12 col-12'>
+                <Scroll>
+                  {/* <TMDBMoviecardList movies={filteredMovies} /> */}
+                  <TMDBTVcardList tvShows={filteredTVshows} />
+                  {/* <NYTcardList news={filteredNews} /> */}
+                </Scroll>
+                {/* <Sidebar1 /> */}
+                {/* <Newsletter />
               <Sidebar2 />
               <Sidebar3 /> */}
 
+              </div>
+              <div className='col-md-2 col-sm-12 col-12'>
+               
+              <h1>Side bar</h1>
+
+              </div>
             </div>
-          </div>
 
-        </main>
+          </main>
 
-      </div>
-    )
+        </div>
+      )
+    }
   }
 }
 
