@@ -18,6 +18,7 @@ import TMDBTVcardList from './components/TMDBTVcard/TMDBTVcardList';
 import NYTcardList from './components/NYTcard/NYTcardList';
 import Socialcard from './components/Socialcard/Socialcard';
 import Quotecard from './components/Quotecard/Quotecard';
+import Weathercard from './components/Weathercard/Weathercard';
 
 import Scroll from './components/Scroll/Scroll';
 import { TMDBapi } from './components/TMDBMoviecard/TMDBapi';
@@ -126,6 +127,7 @@ class App extends Component {
                 <div>
                   {/* <Banner bannerText={`Enter Your Banner Text`} /> */}
                   <Socialcard />
+                  <Weathercard />
                   <Quotecard dailyQuote={randQuote} />
                   <SearchBox onSearchChange={this.onSearchChange} />
                   <div className='pinned-apis'>
