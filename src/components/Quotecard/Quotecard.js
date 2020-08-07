@@ -12,8 +12,8 @@ const Quotecard=({dailyQuote})=>{
         </div>
         <div className="card-body">
           <blockquote className="blockquote mb-0">
-            <p>{dailyQuote.text}</p>
-            <footer className="blockquote-footer"><cite title="Source Title">{dailyQuote.author}</cite></footer>
+            <p style={{fontSize:'14px'}}>{dailyQuote.text}</p>
+            <footer className="blockquote-footer"><cite title="Source Title" style={{fontSize:'12px'}}>{dailyQuote.author}</cite></footer>
           </blockquote>
         </div>
       </div>
