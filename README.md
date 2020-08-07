@@ -1,6 +1,5 @@
 ### React-Bootstrap-API-Template
 
-##### API fake data panel (posts, comments,albums, photos, todos,users,animals,fruits, uifaces)
 ##### picture dictionary
 ##### football news
 ##### random hubble image

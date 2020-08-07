@@ -124,7 +124,8 @@ class App extends Component {
             <div className='row'>
               <div className='col-md-6 col-sm-12 col-12 padding-class'>
                 <div>
-                  <Banner bannerText={`Enter Your Banner Text`} />
+                  {/* <Banner bannerText={`Enter Your Banner Text`} /> */}
+                  <Socialcard />
                   <Quotecard dailyQuote={randQuote} />
                   <SearchBox onSearchChange={this.onSearchChange} />
                   <div className='pinned-apis'>
@@ -148,7 +149,7 @@ class App extends Component {
               </div> */}
                 {/* <Pagination /> */}
               </div>
-              <div className='col-md-4 col-sm-12 col-12 padding-class'>
+              <div className='col-md-6 col-sm-12 col-12 padding-class'>
                 <Scroll>
                   {/* <TMDBMoviecardList movies={filteredMovies} /> */}
                   <TMDBTVcardList tvShows={filteredTVshows} />
@@ -160,11 +161,11 @@ class App extends Component {
               <Sidebar3 /> */}
 
               </div>
-              <div className='col-md-2 col-sm-12 col-12 padding-class'>
+              {/* <div className='col-md-2 col-sm-12 col-12 padding-class'>
                
               <Socialcard />
 
-              </div>
+              </div> */}
             </div>
 
           </main>
