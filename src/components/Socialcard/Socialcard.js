@@ -8,7 +8,7 @@ import {
   FaInstagram,
   FaGoogle,
   FaYahoo,
-  FaLinkedinIn,
+  FaLinkedinIn
 } from "react-icons/fa";
 import "./Socialcard.css";
 
