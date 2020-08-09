@@ -102,18 +102,14 @@ body {
   padding: 20px;
   margin-bottom: 20px;
 };
-
 .sponsor-widget .sponsor-logo-123 .sponsor-card {
   margin-top: 20px;
 };
-
 .sponsor-widget .sponsor-logo-123 .sponsor-card a {
   display: grid;
   grid-template-columns: 60px auto;
   text-decoration: none;
 };
-
-
 .sponsor-widget .sponsor-logo-123 .sponsor-card a .sponsor-details {
   padding: 0 10px;
 }
@@ -274,4 +270,3 @@ hr {
     max-width: 33.333333%;
 }
 }
-

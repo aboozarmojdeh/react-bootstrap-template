@@ -15,7 +15,7 @@ import "./Socialcard.css";
 const Socialcard = () => {
   return (
     <div className='social-container'>
-      <a
+      <a className='social-links'
         href="https://www.facebook.com/"
         target="_blank"
         rel="noopener noreferrer"
@@ -28,7 +28,7 @@ const Socialcard = () => {
         />
       </a>
 
-      <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+      <a className='social-links' href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
         <FaTwitter
           className="twitter"
           data-toggle="tooltip"
@@ -38,6 +38,7 @@ const Socialcard = () => {
       </a>
 
       <a
+      className='social-links'
         href="https://www.instagram.com/"
         target="_blank"
         rel="noopener noreferrer"
@@ -51,6 +52,7 @@ const Socialcard = () => {
       </a>
 
       <a
+      className='social-links'
         href="https://www.gmail.com/"
         target="_blank"
         rel="noopener noreferrer"
@@ -64,6 +66,7 @@ const Socialcard = () => {
       </a>
 
       <a
+      className='social-links'
         href="https://mail.yahoo.com/"
         target="_blank"
         rel="noopener noreferrer"
@@ -77,6 +80,7 @@ const Socialcard = () => {
       </a>
 
       <a
+      className='social-links'
         href="https://www.linkedin.com/"
         target="_blank"
         rel="noopener noreferrer"
