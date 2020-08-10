@@ -34,6 +34,13 @@ class App extends Component {
     this.state = {
       userLatitude: "",
       userLongitude: "",
+      weatherTemp: "",
+      weatherFeelsLike:"",
+      weatherDescription: "",
+      weatherIconSrc: "",
+      weatherCity: "",
+      weatherCountry: "",
+      weatherForecastList:[],
       cats: [],
       searchField: "",
       movies: [],
@@ -43,16 +50,15 @@ class App extends Component {
     };
   }
   /////Geolocation for Popover Component////
-  
 
   getCoordinates() {
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
-      maximumAge: 0
+      maximumAge: 0,
     };
     return new Promise(function (resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject,options);
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
   }
 
@@ -64,16 +70,81 @@ class App extends Component {
     let longitude = position.coords.longitude;
 
     this.setState({ userLatitude: latitude, userLongitude: longitude });
-    // Actually return a value
+    
     console.log(latitude, longitude);
-  }
+    // this.getCurrentWeather(latitude, longitude);
+    // this.getForecastWeather(latitude, longitude);
 
+    console.log(this.state);
+  }
+  //////////////GET Current Weather////////////////////////
+  async getCurrentWeather(latitude, longitude) {
+    
+   try {
+    const KELVIN = 273.15;
+
+    // const key = "f9034a6c94020d9f76bb28cdf288ea27"; //google
+    const key='6c4640d7e71e9d9a0e3b30fc6a699f3e'; //yahooo
+    let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+    const response = await fetch(api);
+    const data = await response.json();
+    let weatherTemp = Math.floor(data.main.temp - KELVIN);
+    let weatherFeelsLike=Math.floor(data.main.feels_like-KELVIN);
+    let weatherDescription = data.weather[0].description;
+    let weatherIconSrc =
+      "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    let weatherCity = data.name;
+    let weatherCountry = data.sys.country;
+
+    this.setState({
+      weatherTemp,
+      weatherFeelsLike,
+      weatherDescription,
+      weatherIconSrc,
+      weatherCity,
+      weatherCountry});
+    } catch(err) {
+      console.log("ooooooops", err);
+    }
+    
+   }
+    
+
+    // console.log('weather kiri',data)
+  
   ///////////////////////////////////////
+  //////////////GET Forecast Weather////////////////////////
+  async getForecastWeather(latitude, longitude){  
+    try{
+      const KELVIN = 273.15;
+      // const key = "f9034a6c94020d9f76bb28cdf288ea27"; //google
+      const key='6c4640d7e71e9d9a0e3b30fc6a699f3e'; //yahooo
+      let api =`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}`
+      const response = await fetch(api);
+      const data = await response.json();
+        let weatherForecastList = data.list
+  //    let weatherFeelsLike=Math.floor(data.main.feels_like-KELVIN);
+  //    let weatherDescription = data.weather[0].description;
+  //    let weatherIconSrc =
+  //      "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+  //    let weatherCity = data.name;
+  //    let weatherCountry = data.sys.country;
+  
+     this.setState({
+      weatherForecastList});
+  console.log('forecast',data.list)
+  
+    } catch(err){
+      console.log("ooooooops", err);
+    }
+   
+          
+  }
+  //////////////////////////////////////////////////////////
 
   componentDidMount() {
-    this.getLocation();
-
-    // this.geoPosition()
+    // this.getLocation();
+    
 
     // fetch('https://jsonplaceholder.typicode.com/users')
     //   .then(response => response.json())
@@ -142,6 +213,13 @@ class App extends Component {
                   <Popoverbtn
                     lat={this.state.userLatitude}
                     long={this.state.userLongitude}
+                    weatherTemp={this.state.weatherTemp}
+                    weatherFeelsLike={this.state.weatherFeelsLike}
+                    weatherDescription={this.state.weatherDescription}
+                    weatherIconSrc={this.state.weatherIconSrc}
+                    weatherCity={this.state.weatherCity}
+                    weatherCountry={this.state.weatherCountry}
+                    weatherForecastList={this.state.weatherForecastList}
                   />
                   <br />
                   <Socialcard />

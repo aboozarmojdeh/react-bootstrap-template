@@ -13,19 +13,16 @@ import {
   FaCloudMoon,
   FaSun,
 } from "react-icons/fa";
-
-const weather = {}; 
-weather.temperature = {  
-    unit : "celsius"  
-}  
+import Popoverbtncard from './Popoverbtncard';
   
-const KELVIN = 273;  
+const KELVIN = 273.15;  
   
 const key = "f9034a6c94020d9f76bb28cdf288ea27";  
 
- 
 
-const Popoverbtn = ({lat,long}) => {
+
+const Popoverbtn = ({lat,long,weatherTemp,weatherFeelsLike,weatherDescription,weatherIconSrc,weatherCity,weatherCountry,weatherForecastList}) => {
+
   let days = [
     "Sunday",
     "Monday",
@@ -39,44 +36,54 @@ const Popoverbtn = ({lat,long}) => {
   let dayNumber = d.getDay();
   let dayString = days[dayNumber];
 
-  function getWeather(latitude, longitude){  
-    // let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;  
-    // let api =  `pro.openweathermap.org/data/2.5/forecast/hourly?lat=${latitude}&lon=${longitude}&appid=${key}`
-    let api =`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}`
-    console.log(api)
-    fetch(api)
-      .then(response => response.json())
-      .then(data => {
-        // weather.temperature.value = Math.floor(data.main.temp - KELVIN);  
-        // weather.description = data.weather[0].description;  
-        // weather.iconId = data.weather[0].icon;  
-        // weather.city = data.name;  
-        // weather.country = data.sys.country;
-        // weather.country = data.sys.country;
-        console.log(data)
-      })
-          
-}
-getWeather(lat,long)
-// console.log(weather)
- 
+
+const weather = {}; 
+weather.temperature = {  
+  unit : "celsius"
+}  ;
+
+//////////////Get Hour and AM PM show/////////////////
+
+
+//////////////////////////////////////////////////////
+///////////////////////Card List Array////////////////
+// const weatherForecastArray = cats.map((cat, index) => {
+//   return (
+//       <Card key={cat.id} id={cat.id} name={cat.name} website={cat.website} companyName={cat.company.name} description={cat.company.catchPhrase} />
+//   )
+// })
+
+////////////////////////////////////////////////////
+
+
   return (
+    
     <div>
-      <div>{lat}</div>
-      <div>{long}</div>
+      {/* <div>{lat}</div>
+      <div>{long}</div> */}
       <Button
         style={{ backgroundColor: "#E9ECEF" }}
         id="PopoverFocus"
         type="button"
       >
         <div style={{ color: "#209CEE" }}>
-          23&deg;
+        <div>
+          <span style={{ color: "#209CEE", fontSize: "1rem" }}>{weatherTemp}&deg;</span>
+          
           <span>
-            <FaCloudSun style={{ marginLeft: "15px", fontSize: "1.5rem" }} />
+          <img src={weatherIconSrc} alt="" />
+            
           </span>
+          </div>
+          <div><span style={{ color: "#209CEE", fontSize: ".8rem",marginTop:'0' }}>Feels like: {weatherFeelsLike}&deg;</span></div>
+          
+        </div>
+        
+        <div style={{ color: "#209CEE", fontSize: ".8rem" }}>
+          {weatherDescription}
         </div>
         <div style={{ color: "#209CEE", fontSize: ".8rem" }}>
-          Toronto, Canada
+          {weatherCity}, {weatherCountry}
         </div>
         <div style={{ color: "#209CEE" }}>{dayString}</div>
       </Button>
@@ -93,21 +100,7 @@ getWeather(lat,long)
             style={{ margin: "5px", backgroundColor: "#71C9F8" }}
           >
             <div className="row">
-              <div className="col" style={{ color: "white" }}>
-                <div className="row row1" style={{ color: "white" }}>
-                  21&deg;
-                </div>
-                <div className="row row2">
-                  <FaCloudSunRain className="img-fluid" />
-                  {/* <img
-                  className="img-fluid"
-                  src="https://img.icons8.com/ios/100/000000/sun.png"
-                  alt=""
-                /> */}
-                </div>
-                <div className="row row3">12:00</div>
-                <div className="row row4">PM</div>
-              </div>
+            <Popoverbtncard />
               <div className="col">
                 <div className="row row1">20&deg;</div>
                 <div className="row row2">
@@ -233,6 +226,8 @@ getWeather(lat,long)
       </UncontrolledPopover>
     </div>
   );
+
+ 
 };
 
 export default Popoverbtn;

@@ -1,20 +1,22 @@
 ### React-Bootstrap-API-Template
 
-##### picture dictionary
-##### football news
+
+##### soccer news with live report (results)
+##### sport news
 ##### random hubble image
 ##### NASA news
-##### calculator
+##### trip advisor
 ##### Heads or Tails (goo)
 ##### breathing exercise (goo)
-##### random password generator
-##### weather report
-##### exchange rate
+
+##### exchange rate gold, oil , stock
 ##### wordsapi
 ##### API panel
 ##### holidays
 ##### worldometers.info
 ##### https://github.com/javieraviles/covidAPI
+##### trending all 3-5
+##### trending music with sample play
 
 
 
