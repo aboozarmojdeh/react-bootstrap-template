@@ -53,7 +53,7 @@ class App extends Component {
 
   getCoordinates() {
     const options = {
-      enableHighAccuracy: true,
+      enableHighAccuracy: false,
       timeout: 5000,
       maximumAge: 0,
     };
@@ -72,10 +72,10 @@ class App extends Component {
     this.setState({ userLatitude: latitude, userLongitude: longitude });
     
     console.log(latitude, longitude);
-    // this.getCurrentWeather(latitude, longitude);
-    // this.getForecastWeather(latitude, longitude);
+    this.getCurrentWeather(latitude, longitude);
+    this.getForecastWeather(latitude, longitude);
 
-    console.log(this.state);
+    // console.log(this.state);
   }
   //////////////GET Current Weather////////////////////////
   async getCurrentWeather(latitude, longitude) {
@@ -104,7 +104,7 @@ class App extends Component {
       weatherCity,
       weatherCountry});
     } catch(err) {
-      console.log("ooooooops", err);
+      console.log("current ooooooops", err);
     }
     
    }
@@ -119,23 +119,24 @@ class App extends Component {
       const KELVIN = 273.15;
       // const key = "f9034a6c94020d9f76bb28cdf288ea27"; //google
       const key='6c4640d7e71e9d9a0e3b30fc6a699f3e'; //yahooo
-      let api =`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}`
+      let api =`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}`;
       const response = await fetch(api);
       const data = await response.json();
-        let weatherForecastList = data.list
+        let weatherForecastList = data.list;
   //    let weatherFeelsLike=Math.floor(data.main.feels_like-KELVIN);
   //    let weatherDescription = data.weather[0].description;
   //    let weatherIconSrc =
   //      "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
   //    let weatherCity = data.name;
   //    let weatherCountry = data.sys.country;
+  // console.log('weatherForecastList',weatherForecastList)
   
      this.setState({
       weatherForecastList});
-  console.log('forecast',data.list)
+  // console.log('forecast',data.list)
   
     } catch(err){
-      console.log("ooooooops", err);
+      console.log("forecast ooooooops", err);
     }
    
           
@@ -196,13 +197,16 @@ class App extends Component {
     /////////////
     const filteredNews = this.state.nytNews.slice(0, 5);
     //////////
+    
+    //////////
     let randomNumber = Math.floor(Math.random() * 1644);
     const randQuote = this.state.quotes[randomNumber];
     /////////////
 
-    if (!this.state.quotes.length) {
+    if (!this.state.quotes.length ) {
       return <Loading />;
-    } else {
+    } else{
+
       return (
         <div className="App container-fluid main-container">
           <main>
@@ -210,7 +214,9 @@ class App extends Component {
               <div className="col-md-8 col-sm-12 col-12 padding-class">
                 <div>
                   {/* <Banner bannerText={`Enter Your Banner Text`} /> */}
-                  <Popoverbtn
+                  
+
+                    <Popoverbtn
                     lat={this.state.userLatitude}
                     long={this.state.userLongitude}
                     weatherTemp={this.state.weatherTemp}
@@ -221,6 +227,8 @@ class App extends Component {
                     weatherCountry={this.state.weatherCountry}
                     weatherForecastList={this.state.weatherForecastList}
                   />
+                  
+                  
                   <br />
                   <Socialcard />
                   {/* <Geoposition /> */}

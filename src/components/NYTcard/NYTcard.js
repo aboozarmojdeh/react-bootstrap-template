@@ -1,6 +1,6 @@
 import React from 'react';
 import './NYTcard.css';
-import ProgressBar from '../ProgressBar/ProgressBar';
+// import ProgressBar from '../ProgressBar/ProgressBar';
 // import Hr from '../Hr';
 // contrast color generator
 function rgbToYIQ({ r, g, b }) {

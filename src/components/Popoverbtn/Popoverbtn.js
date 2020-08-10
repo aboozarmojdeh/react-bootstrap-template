@@ -13,7 +13,7 @@ import {
   FaCloudMoon,
   FaSun,
 } from "react-icons/fa";
-import Popoverbtncard from './Popoverbtncard';
+import Popoverbtnhourcard from './Popoverbtnhourcard';
   
 const KELVIN = 273.15;  
   
@@ -46,19 +46,21 @@ weather.temperature = {
 
 
 //////////////////////////////////////////////////////
+const filteredweatherForecastList = weatherForecastList.slice(0, 5);
+    // console.log('AboofilteredweatherForecastList',filteredweatherForecastList)
 ///////////////////////Card List Array////////////////
-// const weatherForecastArray = cats.map((cat, index) => {
-//   return (
-//       <Card key={cat.id} id={cat.id} name={cat.name} website={cat.website} companyName={cat.company.name} description={cat.company.catchPhrase} />
-//   )
-// })
+const weatherForecastArray = filteredweatherForecastList.map((list, i) => {
+  return (
+      <Popoverbtnhourcard key={list.dt} forecastTime={list.dt} forecastTemp={list.main.temp} forecastFeelsLike={list.feels_like} forecatIcon={list.weather[0].icon} forecastDescription={list.weather[0].description} />
+  )
+})
 
 ////////////////////////////////////////////////////
 
 
   return (
     
-    <div>
+    <div className="className">
       {/* <div>{lat}</div>
       <div>{long}</div> */}
       <Button
@@ -88,71 +90,21 @@ weather.temperature = {
         <div style={{ color: "#209CEE" }}>{dayString}</div>
       </Button>
 
-      <UncontrolledPopover
+      <UncontrolledPopover style={{ padding: "0" }}
         trigger="hover"
-        placement="right"
+        placement="right-end"
         target="PopoverFocus"
+        
       >
         {/* <PopoverHeader>5 hours forecast</PopoverHeader> */}
-        <PopoverBody style={{ padding: "0" }}>
+        <PopoverBody >
           <div
             className="card card-2 new-card "
             style={{ margin: "5px", backgroundColor: "#71C9F8" }}
           >
             <div className="row">
-            <Popoverbtncard />
-              <div className="col">
-                <div className="row row1">20&deg;</div>
-                <div className="row row2">
-                  <FaCloudRain className="img-fluid" />
-                  {/* <img
-                  className="img-fluid"
-                  src="https://img.icons8.com/ios/100/000000/sun.png"
-                  alt=""
-                /> */}
-                </div>
-                <div className="row row3">1:00</div>
-                <div className="row row4">PM</div>
-              </div>
-              <div className="col">
-                <div className="row row1">20&deg;</div>
-                <div className="row row2">
-                  <FaCloudMoon className="img-fluid" />
-                  {/* <img
-                  className="img-fluid"
-                  src="https://img.icons8.com/windows/100/000000/cloud.png"
-                  alt=""
-                /> */}
-                </div>
-                <div className="row row3">2:00</div>
-                <div className="row row4">PM</div>
-              </div>
-              <div className="col">
-                <div className="row row1">19&deg;</div>
-                <div className="row row2">
-                  <FaSun className="img-fluid" />
-                  {/* <img
-                  className="img-fluid"
-                  src="https://img.icons8.com/windows/100/000000/cloud.png"
-                  alt=""
-                /> */}
-                </div>
-                <div className="row row3">3:00</div>
-                <div className="row row4">PM</div>
-              </div>
-              <div className="col">
-                <div className="row row1">18&deg;</div>
-                <div className="row row2">
-                  <FaSun className="img-fluid" />
-                  {/* <img
-                  className="img-fluid"
-                  src="https://img.icons8.com/cotton/64/000000/rain--v3.png"
-                  alt=""
-                /> */}
-                </div>
-                <div className="row row3">4:00</div>
-                <div className="row row4">PM</div>
-              </div>
+            {weatherForecastArray}
+            
             </div>
           </div>
           <div
@@ -226,6 +178,8 @@ weather.temperature = {
       </UncontrolledPopover>
     </div>
   );
+
+  
 
  
 };

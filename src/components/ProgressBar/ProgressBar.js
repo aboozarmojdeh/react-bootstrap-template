@@ -4,18 +4,18 @@ import React from 'react';
 // Import react-circular-progressbar module and styles
 import {
   CircularProgressbar,
-  CircularProgressbarWithChildren,
+  // CircularProgressbarWithChildren,
   buildStyles
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 // Animation
-import { easeQuadInOut } from "d3-ease";
-import AnimatedProgressProvider from "./AnimatedProgressProvider";
-import ChangingProgressProvider from "./ChangingProgressProvider";
+// import { easeQuadInOut } from "d3-ease";
+// import AnimatedProgressProvider from "./AnimatedProgressProvider";
+// import ChangingProgressProvider from "./ChangingProgressProvider";
 
 // Radial separators
-import RadialSeparators from "./RadialSeparators";
+// import RadialSeparators from "./RadialSeparators";
 /////////Example Function///////
 function Example(props) {
     return (
