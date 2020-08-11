@@ -40,12 +40,19 @@
 .row3 {
     font-size: 0.9rem;
     font-weight: bold;
-    color: white
+    color: white;
+    
 }
 .row4 {
     font-size: 0.6rem;
     color: white;
     margin: 5% 0 2.5rem;
+}
+.row5 {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+    
 }
 
 .temp {

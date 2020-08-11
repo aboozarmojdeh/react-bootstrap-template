@@ -129,7 +129,7 @@ class App extends Component {
   //      "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
   //    let weatherCity = data.name;
   //    let weatherCountry = data.sys.country;
-  // console.log('weatherForecastList',weatherForecastList)
+  console.log('weatherForecastList',weatherForecastList)
   
      this.setState({
       weatherForecastList});
@@ -144,7 +144,7 @@ class App extends Component {
   //////////////////////////////////////////////////////////
 
   componentDidMount() {
-    // this.getLocation();
+    this.getLocation();
     
 
     // fetch('https://jsonplaceholder.typicode.com/users')
