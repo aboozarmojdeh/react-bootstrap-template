@@ -91,12 +91,12 @@ const Popoverbtn = ({ lat, long, weatherTemp, weatherFeelsLike, weatherDescripti
     }
 
     let forecastDay = daylist[day] + " " + hour + prepand
-    console.log(forecastDay)
+    // console.log(forecastDay)
     let dtDays=[];
     if (forecastDay.includes('11 AM')) {
       dtDays.push(i);
       
-      console.log('dtDays',dtDays)
+      // console.log('dtDays',dtDays)
       return (
         <Popoverbtndaycard key={listItem.dt} forecastDayName={daylist[day]} forecastDayTime={listItem.dt} forecastDayTemp={listItem.main.temp} forecastDayFeelsLike={listItem.main.feels_like} forecatDayIcon={listItem.weather[0].icon} forecastDayDescription={listItem.weather[0].description} />
       )

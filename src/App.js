@@ -16,6 +16,7 @@ import CardList from "./components/CardList";
 import TMDBMoviecardList from "./components/TMDBMoviecard/TMDBMoviecardList";
 import TMDBTVcardList from "./components/TMDBTVcard/TMDBTVcardList";
 import NYTcardList from "./components/NYTcard/NYTcardList";
+import LnewscardList from './components/Localnewscard/LnewscardList';
 import Socialcard from "./components/Socialcard/Socialcard";
 import Quotecard from "./components/Quotecard/Quotecard";
 import Geoposition from "./components/Geoposition/Geoposition";
@@ -25,8 +26,10 @@ import Popoverbtn from "./components/Popoverbtn/Popoverbtn";
 import Scroll from "./components/Scroll/Scroll";
 import { TMDBapi } from "./components/TMDBMoviecard/TMDBapi";
 import { NYTapi } from "./components/NYTcard/NYTapi";
+import {LnewsApi} from './components/Localnewscard/LocalNewsapi';
 
 import { usePosition } from "use-position";
+
 
 class App extends Component {
   constructor() {
@@ -46,9 +49,85 @@ class App extends Component {
       movies: [],
       tvShows: [],
       nytNews: [],
+      localNews:[],
       quotes: [],
+      ipInfo:{
+        city:'',
+        country:'',
+        ip:'',
+        loc:{
+          lat:'',
+          long:''
+        },
+        region:''
+      }
+      
     };
   }
+  /////////IP Info ///////////////////////
+  async getIPinfo(){  
+    try{
+      let ipInfoObj={
+        loc:{}
+      };
+      const ipInfoToken='82197c9128c110';
+      let IPLink=`http://ipinfo.io/?token=${ipInfoToken}`;
+      const response = await fetch(IPLink);
+      const data = await response.json();
+      let city= data.city;
+      let country= data.country;
+      let currentIP=data.ip;
+      let CurrentLatitude=data.loc.split(',')[0]
+      let CurrentLongitude=data.loc.split(',')[1]
+      let region=data.region;
+      
+ipInfoObj.city=city;
+ipInfoObj.country=country;
+ipInfoObj.ip=currentIP;
+ipInfoObj.loc.lat=CurrentLatitude;
+ipInfoObj.loc.long=CurrentLongitude;
+ipInfoObj.region=region;
+      
+      this.setState({
+        ipInfo:ipInfoObj
+    });
+
+  // console.log('data',data)
+  console.log('ipInfoObj',ipInfoObj)
+
+  this.getCurrentWeather(CurrentLatitude, CurrentLongitude);
+  this.getForecastWeather(CurrentLatitude, CurrentLongitude);
+    } catch(err){
+      console.log("forecast ooooooops", err);
+    }
+   
+          
+  }
+
+  ////////////////////////////////////////
+
+
+  /////////Local News fetch Info ///////////////////////
+   
+  async getLocalNews(){  
+      try{
+        
+        
+        const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`);
+        const data = await response.json();
+        
+        console.log('Local News Api',data)
+    
+  
+      } catch(err){
+        console.log("forecast ooooooops", err);
+      }
+     
+            
+    }
+  
+    ////////////////////////////////////////
+  
   /////Geolocation for Popover Component////
 
   getCoordinates() {
@@ -72,8 +151,8 @@ class App extends Component {
     this.setState({ userLatitude: latitude, userLongitude: longitude });
     
     console.log(latitude, longitude);
-    this.getCurrentWeather(latitude, longitude);
-    this.getForecastWeather(latitude, longitude);
+    // this.getCurrentWeather(latitude, longitude);
+    // this.getForecastWeather(latitude, longitude);
 
     // console.log(this.state);
   }
@@ -95,6 +174,7 @@ class App extends Component {
       "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
     let weatherCity = data.name;
     let weatherCountry = data.sys.country;
+    
 
     this.setState({
       weatherTemp,
@@ -102,7 +182,8 @@ class App extends Component {
       weatherDescription,
       weatherIconSrc,
       weatherCity,
-      weatherCountry});
+      weatherCountry
+  });
     } catch(err) {
       console.log("current ooooooops", err);
     }
@@ -129,7 +210,7 @@ class App extends Component {
   //      "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
   //    let weatherCity = data.name;
   //    let weatherCountry = data.sys.country;
-  console.log('weatherForecastList',weatherForecastList)
+  // console.log('weatherForecastList',weatherForecastList)
   
      this.setState({
       weatherForecastList});
@@ -144,13 +225,17 @@ class App extends Component {
   //////////////////////////////////////////////////////////
 
   componentDidMount() {
-    this.getLocation();
-    
+    // this.getLocation();
+    this.getIPinfo();
+    // this.getLocalNews()
 
+    ////////////////////jsonplaceholder fetch////////////////////////
     // fetch('https://jsonplaceholder.typicode.com/users')
     //   .then(response => response.json())
     //   .then(data => this.setState({ cats: data }));
 
+
+    ////////////////////TMDB Movie fetch////////////////////////
     // fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`)
     //   .then(response => response.json())
     //   .then(data => this.setState({ movies: data.results }))
@@ -159,6 +244,8 @@ class App extends Component {
     // console.log(this.state.movies)
     // console.log(this.state.cats)
 
+
+     ////////////////////TMDB Series fetch////////////////////////
     // fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`)
 
     //   .then(response => response.json())
@@ -167,11 +254,24 @@ class App extends Component {
     // .then(data=>console.log(data.results.slice(0,5)))
     // console.log('kiri',this.state.tvShows)
 
+
+    ////////////////////NYT news fetch////////////////////////
     // fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
 
     //   .then(response => response.json())
     //   .then(data => this.setState({ nytNews: data.results }))
 
+////////////////////Local news fetch////////////////////////
+    
+
+// fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`)
+
+//       .then(response => response.json())
+//       // .then(data => this.setState({ nytNews: data.results }))
+//       .then(data => console.log(data))
+
+
+////////////////////Quotes fetch////////////////////////
     fetch(`https://type.fit/api/quotes`)
       .then((response) => response.json())
       .then((data) => this.setState({ quotes: data }));
@@ -197,7 +297,7 @@ class App extends Component {
     /////////////
     const filteredNews = this.state.nytNews.slice(0, 5);
     //////////
-    
+    const filteredLocalNews = this.state.localNews.slice(0, 5);
     //////////
     let randomNumber = Math.floor(Math.random() * 1644);
     const randQuote = this.state.quotes[randomNumber];
@@ -225,6 +325,7 @@ class App extends Component {
                   />
                   <br />
                   <Socialcard />
+                  <button onClick={()=>this.getLocalNews()}>hi</button>
                  
             </div>
               <div className="col-md-7 col-sm-12 col-12 padding-class">
@@ -251,8 +352,9 @@ class App extends Component {
               <div className="col-md-4 col-sm-12 col-12 padding-class">
                 <Scroll>
                   {/* <TMDBMoviecardList movies={filteredMovies} /> */}
-                  <TMDBTVcardList tvShows={filteredTVshows} />
+                  {/* <TMDBTVcardList tvShows={filteredTVshows} /> */}
                   {/* <NYTcardList news={filteredNews} /> */}
+                  {/* <LnewscardList localNews={filteredLocalNews} /> */}
                 </Scroll>
                 {/* <Sidebar1 /> */}
                 {/* <Newsletter />
