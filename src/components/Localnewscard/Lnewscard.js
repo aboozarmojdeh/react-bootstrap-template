@@ -63,7 +63,7 @@ const Lnewscard = (props) => {
             <br />
             <h6>Published Date: {props.newsPublishedDate}</h6>
             <h3>Abstract</h3>
-            <p>{props.newsAbstract}</p>
+            <p>{props.newsDescription}</p>
             <hr style={{ height: '1px', border: 'none', color: '#fff', backgroundColor: '#fff', width: '80%', textAlign: 'center' }} />
 
 

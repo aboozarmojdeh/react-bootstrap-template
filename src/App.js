@@ -27,6 +27,7 @@ import Scroll from "./components/Scroll/Scroll";
 import { TMDBapi } from "./components/TMDBMoviecard/TMDBapi";
 import { NYTapi } from "./components/NYTcard/NYTapi";
 import {LnewsApi} from './components/Localnewscard/LocalNewsapi';
+import { ButtonToggle } from "reactstrap";
 
 import { usePosition } from "use-position";
 
@@ -116,8 +117,9 @@ ipInfoObj.region=region;
         const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`);
         const data = await response.json();
         
-        console.log('Local News Api',data)
-    
+        console.log('Local News Api',data.articles)
+        this.setState({ localNews: data.articles })
+        
   
       } catch(err){
         console.log("forecast ooooooops", err);
@@ -325,6 +327,8 @@ ipInfoObj.region=region;
                   />
                   <br />
                   <Socialcard />
+                  
+                  <ButtonToggle onClick={()=>this.getLocalNews()} color="primary">primary</ButtonToggle>{' '}
                   <button onClick={()=>this.getLocalNews()}>hi</button>
                  
             </div>
@@ -354,7 +358,7 @@ ipInfoObj.region=region;
                   {/* <TMDBMoviecardList movies={filteredMovies} /> */}
                   {/* <TMDBTVcardList tvShows={filteredTVshows} /> */}
                   {/* <NYTcardList news={filteredNews} /> */}
-                  {/* <LnewscardList localNews={filteredLocalNews} /> */}
+                  <LnewscardList localNews={filteredLocalNews} />
                 </Scroll>
                 {/* <Sidebar1 /> */}
                 {/* <Newsletter />
