@@ -59,7 +59,13 @@
     }
 
 
-
+    .original-style {
+        display: block;
+        list-style-type: none;
+        height:auto;
+        margin:0;
+        padding: 0;
+      }
 
 
 

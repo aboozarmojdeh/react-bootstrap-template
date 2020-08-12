@@ -45,6 +45,7 @@ const Popoverbtnhourcard = ({ forecastTime, forecastTemp, forecastFeelsLike, for
   // console.log("Current Time : " + hour + prepand + " : " + minute + " : " + second);
   const KELVIN = 273.15;
   let temperature = Math.floor(forecastTemp - KELVIN)
+  let feelsTemp = Math.floor(forecastFeelsLike - KELVIN)
 let weatherForecastIcon="http://openweathermap.org/img/w/" + forecatIcon + ".png";
 
 
@@ -53,6 +54,7 @@ let weatherForecastIcon="http://openweathermap.org/img/w/" + forecatIcon + ".png
       <div className="row row1" style={{ color: "white" }}>
         {temperature}&deg;
                 </div>
+                <div className="row row1">Feels like: {feelsTemp}&deg;</div>
       <div className="row row2">
         
         <span>

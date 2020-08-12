@@ -25,13 +25,13 @@ const key = "f9034a6c94020d9f76bb28cdf288ea27";
 const Popoverbtn = ({ lat, long, weatherTemp, weatherFeelsLike, weatherDescription, weatherIconSrc, weatherCity, weatherCountry, weatherForecastList }) => {
 
   let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
   ];
   let d = new Date();
   let dayNumber = d.getDay();
@@ -52,7 +52,7 @@ const Popoverbtn = ({ lat, long, weatherTemp, weatherFeelsLike, weatherDescripti
   ///////////////////////Hourly Card List Array////////////////
   const wFHourArray = filteredweatherForecastList.map((list, i) => {
     return (
-      <Popoverbtnhourcard key={list.dt} forecastTime={list.dt} forecastTemp={list.main.temp} forecastFeelsLike={list.feels_like} forecatIcon={list.weather[0].icon} forecastDescription={list.weather[0].description} />
+      <Popoverbtnhourcard key={list.dt} forecastTime={list.dt} forecastTemp={list.main.temp} forecastFeelsLike={list.main.feels_like} forecatIcon={list.weather[0].icon} forecastDescription={list.weather[0].description} />
     )
   })
 
@@ -117,30 +117,30 @@ return (
     {/* <div>{lat}</div>
       <div>{long}</div> */}
     <Button
-      style={{ backgroundColor: "#E9ECEF" }}
+      style={{ backgroundColor: "#E9ECEF",fontSize:'12px',padding:'5px' }}
       id="PopoverFocus"
       type="button"
     >
       <div style={{ color: "#209CEE" }}>
         <div>
-          <span style={{ color: "#209CEE", fontSize: "1rem" }}>{weatherTemp}&deg;</span>
+          <span style={{ color: "#209CEE" }}>{weatherTemp}&deg;</span>
 
           <span>
-            <img src={weatherIconSrc} alt="" />
+            <img style={{ padding: "0" }} src={weatherIconSrc} alt="" />
 
           </span>
         </div>
-        <div><span style={{ color: "#209CEE", fontSize: ".8rem", marginTop: '0' }}>Feels like: {weatherFeelsLike}&deg;</span></div>
+        {/* <div><span style={{ color: "#209CEE", marginTop: '0' }}>FL: {weatherFeelsLike}&deg;</span></div> */}
 
       </div>
 
-      <div style={{ color: "#209CEE", fontSize: ".8rem" }}>
-        {weatherDescription}
+      <div style={{ color: "#209CEE" }}>
+        {/* {weatherDescription} */}
       </div>
-      <div style={{ color: "#209CEE", fontSize: ".8rem" }}>
-        {weatherCity}, {weatherCountry}
+      <div style={{ color: "#209CEE"}}>
+        {weatherCity}
       </div>
-      <div style={{ color: "#209CEE" }}>{dayString}</div>
+      <div style={{ color: "#209CEE" }}></div>
     </Button>
 
     <UncontrolledPopover style={{ padding: "0" }}

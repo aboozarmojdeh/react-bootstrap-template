@@ -211,12 +211,8 @@ class App extends Component {
         <div className="App container-fluid main-container">
           <main>
             <div className="row">
-              <div className="col-md-8 col-sm-12 col-12 padding-class">
-                <div>
-                  {/* <Banner bannerText={`Enter Your Banner Text`} /> */}
-                  
-
-                    <Popoverbtn
+              <div className="col-md-1 col-sm-12 col-12 padding-class">
+            <Popoverbtn
                     lat={this.state.userLatitude}
                     long={this.state.userLongitude}
                     weatherTemp={this.state.weatherTemp}
@@ -227,10 +223,16 @@ class App extends Component {
                     weatherCountry={this.state.weatherCountry}
                     weatherForecastList={this.state.weatherForecastList}
                   />
-                  
-                  
                   <br />
                   <Socialcard />
+                 
+            </div>
+              <div className="col-md-7 col-sm-12 col-12 padding-class">
+              
+                <div>
+                  {/* <Banner bannerText={`Enter Your Banner Text`} /> */}
+                  
+                  
                   {/* <Geoposition /> */}
                   {/* <Weathercard /> */}
                   <Quotecard dailyQuote={randQuote} />
@@ -243,16 +245,8 @@ class App extends Component {
                 <Divider /> */}
                 </div>
                 <br />
-                {/* <div className='row'>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-              </div> */}
-                {/* <Pagination /> */}
+               
+                
               </div>
               <div className="col-md-4 col-sm-12 col-12 padding-class">
                 <Scroll>
@@ -265,11 +259,7 @@ class App extends Component {
               <Sidebar2 />
               <Sidebar3 /> */}
               </div>
-              {/* <div className='col-md-2 col-sm-12 col-12 padding-class'>
-               
-              <Socialcard />
-
-              </div> */}
+              
             </div>
           </main>
         </div>

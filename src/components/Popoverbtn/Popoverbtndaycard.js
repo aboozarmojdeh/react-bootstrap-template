@@ -20,6 +20,7 @@ let weatherForecastIcon="http://openweathermap.org/img/w/" + forecatDayIcon + ".
           
         </div>
         <div className="row row3">{forecastDayName}</div>
+        <div className="row row5">{forecastDayDescription}</div>
       </div>
       
     )
