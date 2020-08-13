@@ -12,6 +12,7 @@ import Banner from "./components/Banner";
 import Loading from "./components/Loading/Loading";
 import SearchBox from "./components/SearchBox";
 import CardList from "./components/CardList";
+import Navcard from './components/Navcard/Navcard';
 import Carddeck from './components/Carddeck/Carddeck';
 import CarddeckList from './components/Carddeck/CarddeckList';
 // import TMDBcard from './components/TMDBcard/TMDBcard';
@@ -358,6 +359,11 @@ ipInfoObj.region=region;
                   {/* <TMDBTVcardList tvShows={filteredTVshows} /> */}
                   {/* <NYTcardList news={filteredNews} /> */}
                   <LnewscardList localNews={filteredLocalNews} />
+                  <br />
+                  
+                  <Navcard />
+                 
+                  
                 {/* </Scroll> */}
                 {/* <Sidebar1 /> */}
                 {/* <Newsletter />
