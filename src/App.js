@@ -12,6 +12,7 @@ import Banner from "./components/Banner";
 import Loading from "./components/Loading/Loading";
 import SearchBox from "./components/SearchBox";
 import CardList from "./components/CardList";
+import Carddeck from './components/Carddeck/Carddeck';
 // import TMDBcard from './components/TMDBcard/TMDBcard';
 import TMDBMoviecardList from "./components/TMDBMoviecard/TMDBMoviecardList";
 import TMDBTVcardList from "./components/TMDBTVcard/TMDBTVcardList";
@@ -228,7 +229,7 @@ ipInfoObj.region=region;
 
   componentDidMount() {
     // this.getLocation();
-    this.getIPinfo();
+    // this.getIPinfo();
     // this.getLocalNews()
 
     ////////////////////jsonplaceholder fetch////////////////////////
@@ -332,7 +333,7 @@ ipInfoObj.region=region;
                   <button onClick={()=>this.getLocalNews()}>hi</button>
                  
             </div>
-              <div className="col-md-7 col-sm-12 col-12 padding-class">
+              <div className="col-md-6 col-sm-12 col-12 padding-class">
               
                 <div>
                   {/* <Banner bannerText={`Enter Your Banner Text`} /> */}
@@ -353,12 +354,13 @@ ipInfoObj.region=region;
                
                 
               </div>
-              <div className="col-md-4 col-sm-12 col-12 padding-class">
+              <div className="col-md-5 col-sm-12 col-12 padding-class">
+              <Carddeck />
                 <Scroll>
                   {/* <TMDBMoviecardList movies={filteredMovies} /> */}
                   {/* <TMDBTVcardList tvShows={filteredTVshows} /> */}
                   {/* <NYTcardList news={filteredNews} /> */}
-                  <LnewscardList localNews={filteredLocalNews} />
+                  {/* <LnewscardList localNews={filteredLocalNews} /> */}
                 </Scroll>
                 {/* <Sidebar1 /> */}
                 {/* <Newsletter />
