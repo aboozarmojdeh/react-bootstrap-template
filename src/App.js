@@ -13,6 +13,7 @@ import Loading from "./components/Loading/Loading";
 import SearchBox from "./components/SearchBox";
 import CardList from "./components/CardList";
 import Carddeck from './components/Carddeck/Carddeck';
+import CarddeckList from './components/Carddeck/CarddeckList';
 // import TMDBcard from './components/TMDBcard/TMDBcard';
 import TMDBMoviecardList from "./components/TMDBMoviecard/TMDBMoviecardList";
 import TMDBTVcardList from "./components/TMDBTVcard/TMDBTVcardList";
@@ -95,7 +96,7 @@ ipInfoObj.region=region;
     });
 
   // console.log('data',data)
-  console.log('ipInfoObj',ipInfoObj)
+  // console.log('ipInfoObj',ipInfoObj)
 
   this.getCurrentWeather(CurrentLatitude, CurrentLongitude);
   this.getForecastWeather(CurrentLatitude, CurrentLongitude);
@@ -118,7 +119,7 @@ ipInfoObj.region=region;
         const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`);
         const data = await response.json();
         
-        console.log('Local News Api',data.articles)
+        // console.log('Local News Api',data.articles)
         this.setState({ localNews: data.articles })
         
   
@@ -229,7 +230,7 @@ ipInfoObj.region=region;
 
   componentDidMount() {
     // this.getLocation();
-    // this.getIPinfo();
+    this.getIPinfo();
     // this.getLocalNews()
 
     ////////////////////jsonplaceholder fetch////////////////////////
@@ -259,19 +260,12 @@ ipInfoObj.region=region;
 
 
     ////////////////////NYT news fetch////////////////////////
-    // fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
+    fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
 
-    //   .then(response => response.json())
-    //   .then(data => this.setState({ nytNews: data.results }))
+      .then(response => response.json())
+      .then(data => this.setState({ nytNews: data.results }))
 
-////////////////////Local news fetch////////////////////////
-    
 
-// fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`)
-
-//       .then(response => response.json())
-//       // .then(data => this.setState({ nytNews: data.results }))
-//       .then(data => console.log(data))
 
 
 ////////////////////Quotes fetch////////////////////////
@@ -300,7 +294,7 @@ ipInfoObj.region=region;
     /////////////
     const filteredNews = this.state.nytNews.slice(0, 5);
     //////////
-    const filteredLocalNews = this.state.localNews.slice(0, 5);
+    const filteredLocalNews = this.state.localNews.slice(0, 6);
     //////////
     let randomNumber = Math.floor(Math.random() * 1644);
     const randQuote = this.state.quotes[randomNumber];
@@ -333,7 +327,7 @@ ipInfoObj.region=region;
                   <button onClick={()=>this.getLocalNews()}>hi</button>
                  
             </div>
-              <div className="col-md-6 col-sm-12 col-12 padding-class">
+              <div className="col-md-8 col-sm-12 col-12 padding-class">
               
                 <div>
                   {/* <Banner bannerText={`Enter Your Banner Text`} /> */}
@@ -354,14 +348,17 @@ ipInfoObj.region=region;
                
                 
               </div>
-              <div className="col-md-5 col-sm-12 col-12 padding-class">
-              <Carddeck />
-                <Scroll>
+              <div className="col-md-3 col-sm-12 col-12 padding-class">
+             
+                
+                {/* <CarddeckList /> */}
+              
+                {/* <Scroll> */}
                   {/* <TMDBMoviecardList movies={filteredMovies} /> */}
                   {/* <TMDBTVcardList tvShows={filteredTVshows} /> */}
                   {/* <NYTcardList news={filteredNews} /> */}
-                  {/* <LnewscardList localNews={filteredLocalNews} /> */}
-                </Scroll>
+                  <LnewscardList localNews={filteredLocalNews} />
+                {/* </Scroll> */}
                 {/* <Sidebar1 /> */}
                 {/* <Newsletter />
               <Sidebar2 />
