@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import NavbarTest from './components/Navbar/NavbarTest';
 // import Card from './components/Card';
 // import Hr from './components/Hr';
 // import Divider from './components/Divider';
@@ -34,6 +35,9 @@ import { ButtonToggle } from "reactstrap";
 
 import { usePosition } from "use-position";
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class App extends Component {
   constructor() {
@@ -306,7 +310,33 @@ ipInfoObj.region=region;
     } else{
 
       return (
-        <div className="App container-fluid main-container">
+       <div>
+          <NavbarTest />
+          <br />
+
+       
+        <Container fluid>
+            <Row>
+              <Col sm={12} md={8} style={{backgroundColor:"red"}}>sm=8</Col>
+              <Col sm={12} md={4} style={{backgroundColor:"blue"}}>sm=4</Col>
+            </Row>
+            <Row>
+              <Col sm={12} md={1} style={{backgroundColor:"yellow"}}>sm=true</Col>
+              <Col sm={12} md={8} style={{backgroundColor:"green"}}>sm=true</Col>
+              <Col sm={12} md={3} style={{backgroundColor:"red"}}>sm=true</Col>
+            </Row>
+            </Container>
+            
+
+
+
+
+
+
+
+
+<div className="App container-fluid main-container">
+
           <main>
             <div className="row">
               <div className="col-md-1 col-sm-12 col-12 padding-class">
@@ -361,8 +391,8 @@ ipInfoObj.region=region;
                   <LnewscardList localNews={filteredLocalNews} />
                   <br />
                   
-                  <Navcard />
-                 
+                  {/* <Navcard /> */}
+                
                   
                 {/* </Scroll> */}
                 {/* <Sidebar1 /> */}
@@ -373,6 +403,7 @@ ipInfoObj.region=region;
               
             </div>
           </main>
+        </div>
         </div>
       );
     }
