@@ -116,8 +116,8 @@ return (
   <div className="className">
     {/* <div>{lat}</div>
       <div>{long}</div> */}
-    <Button
-      style={{ backgroundColor: "#E9ECEF",fontSize:'12px',padding:'5px' }}
+    <Button 
+      style={{ backgroundColor: "#E9ECEF",fontSize:'12px',padding:'0px' }}
       id="PopoverFocus"
       type="button"
     >
@@ -126,7 +126,7 @@ return (
           <span style={{ color: "#209CEE" }}>{weatherTemp}&deg;</span>
 
           <span>
-            <img style={{ padding: "0" }} src={weatherIconSrc} alt="" />
+            <img style={{ padding: "0",width:"20px" }} src={weatherIconSrc} alt="" />
 
           </span>
         </div>

@@ -10,7 +10,8 @@ import {
   FaInstagram,
   FaGoogle,
   FaYahoo,
-  FaLinkedinIn
+  FaLinkedinIn,
+  FaUserCircle
 } from "react-icons/fa";
 import "./Socialcard.css";
 
@@ -109,7 +110,9 @@ const Socialcard = (props) => {
 
   return (
     <div>
-      <Button color="primary" onClick={toggle} style={{ marginBottom: '1rem' }}>T</Button>
+      <Button color="primary" onClick={toggle} style={{ marginBottom: '1rem' }}>
+      <FaUserCircle />
+      </Button>
       <Collapse isOpen={isOpen}>
         <Card style={{width:'40px'}}>
           <CardBody >

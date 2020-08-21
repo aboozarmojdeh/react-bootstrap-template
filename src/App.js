@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import NavbarTest from './components/Navbar/NavbarTest';
+import Navbartop from './components/Navbar/Navbartop';
 // import Card from './components/Card';
 // import Hr from './components/Hr';
 // import Divider from './components/Divider';
@@ -35,9 +35,10 @@ import { ButtonToggle } from "reactstrap";
 
 import { usePosition } from "use-position";
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
+import { FaRegNewspaper } from "react-icons/fa";
 
 class App extends Component {
   constructor() {
@@ -306,41 +307,18 @@ ipInfoObj.region=region;
     /////////////
 
     if (!this.state.quotes.length ) {
-      return <Loading />;
+      return (
+        <div>
+        <Navbartop />
+      <Loading />
+      </div>)
     } else{
 
       return (
        <div>
-          <NavbarTest />
-          <br />
-
-       
-        <Container fluid>
-            <Row>
-              <Col sm={12} md={8} style={{backgroundColor:"red"}}>sm=8</Col>
-              <Col sm={12} md={4} style={{backgroundColor:"blue"}}>sm=4</Col>
-            </Row>
-            <Row>
-              <Col sm={12} md={1} style={{backgroundColor:"yellow"}}>sm=true</Col>
-              <Col sm={12} md={8} style={{backgroundColor:"green"}}>sm=true</Col>
-              <Col sm={12} md={3} style={{backgroundColor:"red"}}>sm=true</Col>
-            </Row>
-            </Container>
-            
-
-
-
-
-
-
-
-
-<div className="App container-fluid main-container">
-
-          <main>
-            <div className="row">
-              <div className="col-md-1 col-sm-12 col-12 padding-class">
-            <Popoverbtn
+          <Navbartop />
+          <div className="side-bar" style={{float:"right"}}>
+          <Popoverbtn
                     lat={this.state.userLatitude}
                     long={this.state.userLongitude}
                     weatherTemp={this.state.weatherTemp}
@@ -351,16 +329,20 @@ ipInfoObj.region=region;
                     weatherCountry={this.state.weatherCountry}
                     weatherForecastList={this.state.weatherForecastList}
                   />
-                  <br />
+                   <br />
                   <Socialcard />
                   
-                  <ButtonToggle onClick={()=>this.getLocalNews()} color="primary">primary</ButtonToggle>{' '}
-                  <button onClick={()=>this.getLocalNews()}>hi</button>
-                 
-            </div>
-              <div className="col-md-8 col-sm-12 col-12 padding-class">
-              
-                <div>
+                  <ButtonToggle onClick={()=>this.getLocalNews()} color="primary">
+                    <FaRegNewspaper />
+                  </ButtonToggle>{' '}
+                  {/* <button onClick={()=>this.getLocalNews()}>hi</button> */}
+                  </div>
+<div className="App container-fluid main-container">
+
+          <main>
+            <div className="row">
+              <div className="col-md-3 col-sm-12 col-12 padding-class">
+              <div>
                   {/* <Banner bannerText={`Enter Your Banner Text`} /> */}
                   
                   
@@ -375,14 +357,10 @@ ipInfoObj.region=region;
                 <Hr />
                 <Divider /> */}
                 </div>
-                <br />
-               
-                
-              </div>
-              <div className="col-md-3 col-sm-12 col-12 padding-class">
-             
-                
-                {/* <CarddeckList /> */}
+                 
+            </div>
+              <div className="col-md-9 col-sm-12 col-12 padding-class">
+               {/* <CarddeckList /> */}
               
                 {/* <Scroll> */}
                   {/* <TMDBMoviecardList movies={filteredMovies} /> */}
@@ -399,7 +377,12 @@ ipInfoObj.region=region;
                 {/* <Newsletter />
               <Sidebar2 />
               <Sidebar3 /> */}
+           
+                <br />
+               
+                
               </div>
+          
               
             </div>
           </main>
