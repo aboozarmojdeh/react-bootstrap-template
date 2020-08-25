@@ -31,10 +31,10 @@ const Navbartop = () => {
           <LinkContainer exact to="/">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-          <LinkContainer  to="/home2/">
+          <LinkContainer  to="/home2">
               <Nav.Link>Home2</Nav.Link>
             </LinkContainer>
-          <LinkContainer exact to="/home3/">
+          <LinkContainer exact to="/home3">
               <Nav.Link>Home3</Nav.Link>
             </LinkContainer>
           {/* <Nav.Link ></Nav.Link>

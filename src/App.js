@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 // import Navbar from './components/Navbar';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
-import Home from './components//Home/Home';
-// import Home2 from './components/Home2/Home2';
-// import Home3 from './components/Home3/Home3';
+import Home from './components/Home/Home';
+import Home2 from './components/Home2/Home2';
+import Home3 from './components/Home3/Home3';
 import NavbarTest from './components/Navbar/Navbartop';
 
 class App extends Component {
@@ -14,8 +14,8 @@ class App extends Component {
         <NavbarTest/>
         <Switch>
           <Route exact path="/" component={Home}/>
-          {/* <Route path="/home2" component={Home2}/> */}
-          {/* <Route path="/home3" component={Home3}/> */}
+          <Route path="/home2" component={Home2}/>
+          <Route path="/home3" component={Home3}/>
         </Switch>
       </div>
       </BrowserRouter>

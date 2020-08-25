@@ -1,9 +1,9 @@
-import React from "React";
+import React from "react";
 
 const Home3=()=>{
     return(
         <div>
-                <h1>Hello Home2 Page</h1>
+                <h1>Hello Home3 Page</h1>
             </div>
     )
 }
