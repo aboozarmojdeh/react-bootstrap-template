@@ -64,7 +64,7 @@ const Lnewscard = (props) => {
 
     src={props.newsImage } 
 
-    alt="No Image" /> 
+    alt="Current Image" /> 
     : 
     <img class="card-img-top" 
 
