@@ -72,12 +72,12 @@ const Lnewscard = (props) => {
 
     alt="" /> }
     
-    <div class="card-body" style={{ color: contrast(randColor),fontSize:"12px" }}>
+    <div class="card-body" style={{ color: contrast(randColor),fontSize:"16px" }}>
       <p class="card-title">{props.newsTitle}</p>
      
       <a href={props.newsURL} class="card-link" target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More ...</a>
     </div>
-    <div class="card-footer" style={{ color: contrast(randColor),fontSize:"12px",padding:"2px",textAlign:"center"}}>
+    <div class="card-footer" style={{ color: contrast(randColor),fontSize:"14px",padding:"2px",textAlign:"center"}}>
       <small >{dateMaker(newsDate)}</small>
     </div>
   
