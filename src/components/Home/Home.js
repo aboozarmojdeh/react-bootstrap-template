@@ -317,7 +317,7 @@ ipInfoObj.region=region;
       return (
        <div>
           {/* <Navbartop /> */}
-          <div className="side-bar" style={{float:"right"}}>
+          <div className="side-bar" style={{float:"right",marginTop:'20px'}}>
           <Popoverbtn
                     lat={this.state.userLatitude}
                     long={this.state.userLongitude}

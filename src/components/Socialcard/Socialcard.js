@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Collapse, Button, CardBody, Card, Tooltip  } from 'reactstrap';
 // import React from "react";
 // // import ReactDOM from "react-dom";
 // // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -105,12 +105,17 @@ import "./Socialcard.css";
 
 const Socialcard = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const toggleMainButton = () => setTooltipOpen(!tooltipOpen);
 
   return (
     <div>
-      <Button color="primary" onClick={toggle} style={{ marginBottom: '1rem' }}>
+      <Button id="social-button" color="primary" onMouseOver={toggleMainButton} onClick={toggle} style={{ marginBottom: '1rem' }}>
+      <Tooltip placement="left" isOpen={tooltipOpen} target="social-button" toggle={toggleMainButton}>
+        Social Button
+      </Tooltip>
       <FaUserCircle />
       </Button>
       <Collapse isOpen={isOpen}>
