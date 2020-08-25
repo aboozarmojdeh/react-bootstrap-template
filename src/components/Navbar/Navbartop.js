@@ -1,21 +1,43 @@
 import React from 'react';
+import { LinkContainer } from "react-router-bootstrap";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import {NavLink, Link} from 'react-router-dom';
+
+// import { Nav, Navbar, NavItem } from "react-bootstrap";
 
 const Navbartop = () => {
   return (
 
 
     <Navbar bg="primary" variant="dark" expand="lg">
-      <Navbar.Brand href="#home">Web You Web</Navbar.Brand>
+      <LinkContainer exact to="/">
+      <Navbar.Brand>Web You Web</Navbar.Brand>
+      </LinkContainer>
+      
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#Home1">Home1</Nav.Link>
+        {/* <ul>
+                    <li><NavLink exact to="/">Home</NavLink></li>
+                    <li><NavLink to="/home2/">Home2</NavLink></li>
+                    <li><NavLink to="/home3/">Home3</NavLink></li>
+                </ul> */}
+          <LinkContainer exact to="/">
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+          <LinkContainer  to="/home2/">
+              <Nav.Link>Home2</Nav.Link>
+            </LinkContainer>
+          <LinkContainer exact to="/home3/">
+              <Nav.Link>Home3</Nav.Link>
+            </LinkContainer>
+          {/* <Nav.Link ></Nav.Link>
           <Nav.Link href="#Home2">Home2</Nav.Link>
           <Nav.Link href="#Home3">Home3</Nav.Link>
           <Nav.Link href="#Home4">Home4</Nav.Link>
@@ -25,7 +47,7 @@ const Navbartop = () => {
           <Nav.Link href="#Home8">Home8</Nav.Link>
           <Nav.Link href="#Home9">Home9</Nav.Link>
           <Nav.Link href="#Home10">Home10</Nav.Link>
-          <Nav.Link href="#Home11">Home11</Nav.Link>
+          <Nav.Link href="#Home11">Home11</Nav.Link> */}
           {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
