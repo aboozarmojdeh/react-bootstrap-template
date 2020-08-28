@@ -38,10 +38,13 @@ const LnewscardList = ({ localNews }) => {
     
     return (
         <div>
-            <WidgetHeader  widgetHeaderLink={`https://www.nytimes.com/`} widgetHeaderText={`New York Times 5 latest news`}/>
-            <div><div className="card-deck">
+       
+            {/* <WidgetHeader  widgetHeaderLink={`https://www.nytimes.com/`} widgetHeaderText={`6 Latest Local News`}/> */}
+            <div>
+            <div className="card-deck">
                 {localNewscardArray1}
-            </div></div>
+            </div>
+            </div>
             <div style={{ height: "10px" }}></div>
             <div>
                 <div className="card-deck">

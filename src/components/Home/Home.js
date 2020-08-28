@@ -26,7 +26,7 @@ import Quotecard from "../Quotecard/Quotecard";
 import Geoposition from "../Geoposition/Geoposition";
 // import Weathercard from '../Weathercard/Weathercard';
 import Popoverbtn from "../Popoverbtn/Popoverbtn";
-
+import WidgetHeader from "../WidgetHeader/WidgetHeader";
 import Scroll from "../Scroll/Scroll";
 import { TMDBapi } from "../TMDBMoviecard/TMDBapi";
 import { NYTapi } from "../NYTcard/NYTapi";
@@ -69,7 +69,9 @@ class Home extends Component {
           long:''
         },
         region:''
-      }
+      },
+      widgetSearchRequestText:'your interests',
+      widgetSearchRequestURL:''
       
     };
   }
@@ -126,11 +128,11 @@ ipInfoObj.region=region;
         const data = await response.json();
         
         // console.log('Local News Api',data.articles)
-        this.setState({ localNews: data.articles })
+        this.setState({ localNews: data.articles, widgetSearchRequestText:"Local News",widgetSearchRequestURL:"Local News" })
         
   
       } catch(err){
-        console.log("forecast ooooooops", err);
+        console.log("localnews ooooooops", err);
       }
      
             
@@ -275,9 +277,9 @@ ipInfoObj.region=region;
 
 
 ////////////////////Quotes fetch////////////////////////
-    // fetch(`https://type.fit/api/quotes`)
-    //   .then((response) => response.json())
-    //   .then((data) => this.setState({ quotes: data }));
+    fetch(`https://type.fit/api/quotes`)
+      .then((response) => response.json())
+      .then((data) => this.setState({ quotes: data }));
   }
 
   onSearchChange = (event) => {
@@ -360,6 +362,8 @@ ipInfoObj.region=region;
                  
             </div>
               <div className="col-md-9 col-sm-12 col-12 padding-class">
+              <WidgetHeader  widgetHeaderLink={`${this.state.widgetSearchRequestURL}`} widgetHeaderText={`Your search result about ${this.state.widgetSearchRequestText}`}/>
+
                {/* <CarddeckList /> */}
               
                 {/* <Scroll> */}
