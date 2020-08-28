@@ -6,6 +6,7 @@ import Home2 from './components/Home2/Home2';
 import Home3 from './components/Home3/Home3';
 import Navbartop from './components/Navbar/Navbartop';
 import Colorline from './components/Colorline/Colorline';
+// import './App.css'
 
 class App extends Component {
   render() {

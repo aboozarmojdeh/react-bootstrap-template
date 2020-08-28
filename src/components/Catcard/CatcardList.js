@@ -6,7 +6,7 @@ import Catcard from './Catcard';
 
 
 
-const CatcardList = ({ cats }) => {
+const CatcardList = ({ cats, getLocalNews }) => {
 
     const cardArray = cats.map((cat, index) => {
         return (

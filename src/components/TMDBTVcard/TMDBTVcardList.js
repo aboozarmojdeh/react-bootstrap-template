@@ -28,7 +28,7 @@ const TMDBTVcardList = ({ tvShows }) => {
     
     return (
         <div>
-            <WidgetHeader widgetHeaderLink={`https://www.themoviedb.org/`} widgetHeaderText={`The 5 most popular movies on TMDB`}/>
+            {/* <WidgetHeader widgetHeaderLink={`https://www.themoviedb.org/`} widgetHeaderText={`The 5 most popular movies on TMDB`}/> */}
             {TMDBTVcardArray}
         </div>
 

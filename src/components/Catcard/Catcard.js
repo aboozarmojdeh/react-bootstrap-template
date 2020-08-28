@@ -43,6 +43,13 @@ function contrast(colorHex, threshold = 128) {
 
   return rgbToYIQ(rgb) >= threshold ? '#000' : '#fff';
 }
+
+
+function handleClick(e) {
+  e.preventDefault();
+  console.log('The link was clicked.');
+}
+
 //////////////////////
 
 

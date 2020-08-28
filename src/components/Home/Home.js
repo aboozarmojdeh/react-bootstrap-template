@@ -268,10 +268,10 @@ ipInfoObj.region=region;
 
 
     ////////////////////NYT news fetch////////////////////////
-    fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
+    // fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
 
-      .then(response => response.json())
-      .then(data => this.setState({ nytNews: data.results }))
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ nytNews: data.results }))
 
 
 
@@ -289,6 +289,16 @@ ipInfoObj.region=region;
   };
 
   render() {
+////////////////ITEM TEST for Searching the subjects////////////////////////
+    const itemsTest=[
+      {
+name:"Local News"
+      },
+      {
+name:"Movies"
+      }
+    ];
+/////////////////////////////////////////
     const filteredCats = this.state.cats.filter((cat) => {
       return cat.name
         .toLowerCase()
@@ -337,6 +347,8 @@ ipInfoObj.region=region;
                   <ButtonToggle onClick={()=>this.getLocalNews()} color="primary">
                     <FaRegNewspaper />
                   </ButtonToggle>{' '}
+                  <br />
+                 
                   {/* <button onClick={()=>this.getLocalNews()}>hi</button> */}
                   </div>
 <div className="App container-fluid main-container">
