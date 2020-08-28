@@ -8,34 +8,57 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import {NavLink, Link} from 'react-router-dom';
-
+import { FaHome, FaSwatchbook, FaPlaceOfWorship } from "react-icons/fa"; 
+import './Navbartop.css';
 // import { Nav, Navbar, NavItem } from "react-bootstrap";
 
 const Navbartop = () => {
   return (
 
 
-    <Navbar bg="primary" variant="dark" expand="lg">
+    <Navbar bg="light" variant="light" expand="lg">
       <LinkContainer exact to="/">
-      <Navbar.Brand>Web You Web</Navbar.Brand>
+      <Navbar.Brand >Web You Web</Navbar.Brand>
       </LinkContainer>
       
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+      <Form inline>
+          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+          <Button variant="outline-primary">Search</Button>
+        </Form>
+        <Nav className="mr-auto ml-auto" variant="pills">
         {/* <ul>
                     <li><NavLink exact to="/">Home</NavLink></li>
                     <li><NavLink to="/home2/">Home2</NavLink></li>
                     <li><NavLink to="/home3/">Home3</NavLink></li>
                 </ul> */}
           <LinkContainer exact to="/">
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Link className="top-nav-icons">
+                <FaHome 
+                className="top-nav-home-icon"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Home"
+            /></Nav.Link>
             </LinkContainer>
           <LinkContainer  to="/home2">
-              <Nav.Link>Home2</Nav.Link>
+              <Nav.Link className="top-nav-icons">
+                <FaSwatchbook 
+                className="top-nav-home2-icon"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Home2"
+                /></Nav.Link>
             </LinkContainer>
           <LinkContainer exact to="/home3">
-              <Nav.Link>Home3</Nav.Link>
+              <Nav.Link className="top-nav-icons">
+                <FaPlaceOfWorship 
+                className="top-nav-home3-icon"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Home3"
+                /></Nav.Link>
             </LinkContainer>
           {/* <Nav.Link ></Nav.Link>
           <Nav.Link href="#Home2">Home2</Nav.Link>
@@ -56,10 +79,7 @@ const Navbartop = () => {
         <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
       </NavDropdown> */}
         </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-light">Search</Button>
-        </Form>
+        
       </Navbar.Collapse>
     </Navbar>
 
