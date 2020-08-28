@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { LinkContainer } from "react-router-bootstrap";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -9,14 +9,23 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import {NavLink, Link} from 'react-router-dom';
 import { FaHome, FaSwatchbook, FaPlaceOfWorship } from "react-icons/fa"; 
+import {Tooltip} from 'reactstrap';
 import './Navbartop.css';
 // import { Nav, Navbar, NavItem } from "react-bootstrap";
 
-const Navbartop = () => {
+const Navbartop = (props) => {
+
+  const [tooltipOpenHome, setTooltipOpenHome] = useState(false);
+  const [tooltipOpenHome2, setTooltipOpenHome2] = useState(false);
+  const [tooltipOpenHome3, setTooltipOpenHome3] = useState(false);
+  const toggleMainNavIcons = () => setTooltipOpenHome(!tooltipOpenHome);
+  const toggleMainNavIconsHome2=()=>setTooltipOpenHome2(!tooltipOpenHome2);
+  const toggleMainNavIconsHome3=()=>setTooltipOpenHome3(!tooltipOpenHome3);
+
   return (
 
 
-    <Navbar bg="light" variant="light" expand="lg">
+    <Navbar bg="light" variant="light" expand="lg" sticky="top">
       <LinkContainer exact to="/">
       <Navbar.Brand >Web You Web</Navbar.Brand>
       </LinkContainer>
@@ -34,32 +43,41 @@ const Navbartop = () => {
                     <li><NavLink to="/home3/">Home3</NavLink></li>
                 </ul> */}
           <LinkContainer exact to="/">
-              <Nav.Link className="top-nav-icons">
-                <FaHome 
+              <Nav.Link className="top-nav-icons" id="top-nav-home-tooltip">
+                <FaHome  
                 className="top-nav-home-icon"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Home"
+                // data-toggle="tooltip"
+                // data-placement="bottom"
+                // title="Home"
             /></Nav.Link>
             </LinkContainer>
+            <Tooltip className="tooltip-css" placement="bottom" isOpen={tooltipOpenHome} target="top-nav-home-tooltip" toggle={toggleMainNavIcons}>
+        Home
+      </Tooltip>
           <LinkContainer  to="/home2">
-              <Nav.Link className="top-nav-icons">
+              <Nav.Link className="top-nav-icons" id="top-nav-home2-tooltip">
                 <FaSwatchbook 
                 className="top-nav-home2-icon"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Home2"
+                // data-toggle="tooltip"
+                // data-placement="bottom"
+                // title="Home2"
                 /></Nav.Link>
             </LinkContainer>
+            <Tooltip className="tooltip-css" placement="bottom" isOpen={tooltipOpenHome2} target="top-nav-home2-tooltip" toggle={toggleMainNavIconsHome2}>
+        Home2
+      </Tooltip>
           <LinkContainer exact to="/home3">
-              <Nav.Link className="top-nav-icons">
+              <Nav.Link className="top-nav-icons" id="top-nav-home3-tooltip">
                 <FaPlaceOfWorship 
                 className="top-nav-home3-icon"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Home3"
+                // data-toggle="tooltip"
+                // data-placement="bottom"
+                // title="Home3"
                 /></Nav.Link>
             </LinkContainer>
+            <Tooltip className="tooltip-css" placement="bottom" isOpen={tooltipOpenHome3} target="top-nav-home3-tooltip" toggle={toggleMainNavIconsHome3}>
+        Home3
+      </Tooltip>
           {/* <Nav.Link ></Nav.Link>
           <Nav.Link href="#Home2">Home2</Nav.Link>
           <Nav.Link href="#Home3">Home3</Nav.Link>

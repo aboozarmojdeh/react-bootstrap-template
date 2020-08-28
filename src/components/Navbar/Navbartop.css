@@ -58,3 +58,6 @@ a.top-nav-icons.nav-link:hover {
      padding-left:2rem !important;
 }
 
+.tooltip-css {
+    opacity: 0.7;
+}

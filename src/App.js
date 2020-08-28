@@ -15,6 +15,7 @@ class App extends Component {
         <Colorline />
         <br />
         <Navbartop/>
+        {/* <br /> */}
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route path="/home2" component={Home2}/>

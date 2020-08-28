@@ -12,7 +12,7 @@ import Banner from "../Banner";
 // import Newsletter from '../Newsletter';
 import Loading from "../Loading/Loading";
 import SearchBox from "../SearchBox";
-import CardList from "../CardList";
+import CatcardList from "../Catcard/CatcardList";
 import Navcard from '../Navcard/Navcard';
 import Carddeck from '../Carddeck/Carddeck';
 import CarddeckList from '../Carddeck/CarddeckList';
@@ -240,9 +240,9 @@ ipInfoObj.region=region;
     // this.getLocalNews()
 
     ////////////////////jsonplaceholder fetch////////////////////////
-    // fetch('https://jsonplaceholder.typicode.com/users')
-    //   .then(response => response.json())
-    //   .then(data => this.setState({ cats: data }));
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => this.setState({ cats: data }));
 
 
     ////////////////////TMDB Movie fetch////////////////////////
@@ -275,9 +275,9 @@ ipInfoObj.region=region;
 
 
 ////////////////////Quotes fetch////////////////////////
-    fetch(`https://type.fit/api/quotes`)
-      .then((response) => response.json())
-      .then((data) => this.setState({ quotes: data }));
+    // fetch(`https://type.fit/api/quotes`)
+    //   .then((response) => response.json())
+    //   .then((data) => this.setState({ quotes: data }));
   }
 
   onSearchChange = (event) => {
@@ -351,7 +351,7 @@ ipInfoObj.region=region;
                   <Quotecard dailyQuote={randQuote} />
                   <SearchBox onSearchChange={this.onSearchChange} />
                   <div className="pinned-apis">
-                    <CardList cats={filteredCats} />
+                    <CatcardList cats={filteredCats} />
                   </div>
                   {/* <br />
                 <Hr />
