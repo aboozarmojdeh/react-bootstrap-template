@@ -37,10 +37,10 @@ function contrast(colorHex, threshold = 128) {
   return rgbToYIQ(rgb) >= threshold ? '#000' : '#fff';
 }
 //////////////////////
-function dateMaker(publishedDate){
-  let reformedDate=new Date(publishedDate)
-  let modifiedDate=reformedDate.toString().split(" ").slice(0,5).join(" ");
- return modifiedDate
+function dateMaker(publishedDate) {
+  let reformedDate = new Date(publishedDate)
+  let modifiedDate = reformedDate.toString().split(" ").slice(0, 5).join(" ");
+  return modifiedDate
 }
 ///////////////////////
 
@@ -54,34 +54,34 @@ const Lnewscard = (props) => {
 
   const randColor = randBGenerator();
 
-  let newsDate=props.newsPublishedDate;
+  let newsDate = props.newsPublishedDate;
   return (
 
-    
+
     <div class="card" style={{ backgroundColor: randColor }}>
-    { props.newsImage ? 
-    <img class="card-img-top" 
+      {props.newsImage ?
+        <img class="card-img-top"
 
-    src={props.newsImage } 
+          src={props.newsImage}
 
-    alt="Current Img" /> 
-    : 
-    <img class="card-img-top" 
+          alt="Current Img" />
+        :
+        <img class="card-img-top"
 
-    src={altImage}
+          src={altImage}
 
-    alt="" /> }
-    
-    <div class="card-body" style={{ color: contrast(randColor),fontSize:"16px" }}>
-      <p class="card-title">{props.newsTitle}</p>
-     
-      <a href={props.newsURL} class="card-link" target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More ...</a>
+          alt="" />}
+
+      <div class="card-body card-text-responsive" style={{ color: contrast(randColor) }}>
+        <p class="card-title" >{props.newsTitle}</p>
+
+        <a href={props.newsURL} class="card-link" target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More ...</a>
+      </div>
+      <div class="card-footer" style={{ color: contrast(randColor), fontSize: "14px", padding: "2px", textAlign: "center" }}>
+        <small >{dateMaker(newsDate)}</small>
+      </div>
+
     </div>
-    <div class="card-footer" style={{ color: contrast(randColor),fontSize:"14px",padding:"2px",textAlign:"center"}}>
-      <small >{dateMaker(newsDate)}</small>
-    </div>
-  
-  </div>
   )
 };
 

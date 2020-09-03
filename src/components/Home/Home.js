@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./Home.css";
 import Navbartop from '../Navbar/Navbartop';
 // import Card from '../Card';
@@ -327,9 +327,9 @@ name:"Movies"
     } else{
 
       return (
-       <div>
+       <Fragment>
           {/* <Navbartop /> */}
-          <div className="side-bar" style={{float:"right",marginTop:'20px'}}>
+          {/* <div className="side-bar" style={{float:"right",marginTop:'20px'}}>
           <Popoverbtn
                     lat={this.state.userLatitude}
                     long={this.state.userLongitude}
@@ -349,8 +349,8 @@ name:"Movies"
                   </ButtonToggle>{' '}
                   <br />
                  
-                  {/* <button onClick={()=>this.getLocalNews()}>hi</button> */}
-                  </div>
+                  // <button onClick={()=>this.getLocalNews()}>hi</button>
+                  </div> */}
 <div className="App container-fluid main-container">
 
           <main>
@@ -363,6 +363,45 @@ name:"Movies"
                   {/* <Geoposition /> */}
                   {/* <Weathercard /> */}
                   <Quotecard dailyQuote={randQuote} />
+                
+                  <div className="card">
+        <div className="card-header header-bg">
+          Quote of the day
+        </div>
+        <div className="card-body">
+          <blockquote className="blockquote mb-0">
+            <div className="d-inline-flex p-2">
+            <Popoverbtn 
+                    lat={this.state.userLatitude}
+                    long={this.state.userLongitude}
+                    weatherTemp={this.state.weatherTemp}
+                    weatherFeelsLike={this.state.weatherFeelsLike}
+                    weatherDescription={this.state.weatherDescription}
+                    weatherIconSrc={this.state.weatherIconSrc}
+                    weatherCity={this.state.weatherCity}
+                    weatherCountry={this.state.weatherCountry}
+                    weatherForecastList={this.state.weatherForecastList}
+                  />
+            </div>
+          
+            <div className="d-inline-flex p-2">
+                  <Socialcard />
+                  </div>
+                  <div className="d-inline-flex p-2">
+                  <ButtonToggle onClick={()=>this.getLocalNews()} color="primary">
+                    <FaRegNewspaper />
+                  </ButtonToggle>{' '}
+                  </div>
+                  <br />
+
+            <p style={{fontSize:'14px'}}></p>
+            <footer className="blockquote-footer"><cite title="Source Title" style={{fontSize:'12px'}}></cite></footer>
+          </blockquote>
+        </div>
+      </div>
+
+
+                  
                   <SearchBox onSearchChange={this.onSearchChange} />
                   <div className="pinned-apis">
                     <CatcardList cats={filteredCats} />
@@ -403,7 +442,7 @@ name:"Movies"
             </div>
           </main>
         </div>
-        </div>
+        </Fragment>
       );
     }
   }
