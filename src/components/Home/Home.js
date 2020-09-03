@@ -122,6 +122,8 @@ ipInfoObj.region=region;
    
   async getLocalNews(){  
       try{
+        this.setState({nytNews: []})
+        this.setState({localNews:[]})
         
         
         const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`);
@@ -139,6 +141,31 @@ ipInfoObj.region=region;
     }
   
     ////////////////////////////////////////
+    /////////World(NYT) News fetch Info ///////////////////////
+    async getNYTNews(){  
+      try{
+        this.setState({nytNews: []})
+        this.setState({localNews:[]})
+        
+        const response = await fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`);
+        const data = await response.json();
+        
+        // console.log('Local News Api',data.articles)
+        this.setState({ nytNews: data.results, widgetSearchRequestText:"NYT News",widgetSearchRequestURL:"NYT News" })
+        
+  
+      } catch(err){
+        console.log("NYTnews ooooooops", err);
+      }
+     
+            
+    }
+
+    // fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`)
+
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ nytNews: data.results }))
+    //////////////////////////////////////////////////////
   
   /////Geolocation for Popover Component////
 
@@ -310,7 +337,7 @@ name:"Movies"
     ////////////
     const filteredTVshows = this.state.tvShows.slice(0, 5);
     /////////////
-    const filteredNews = this.state.nytNews.slice(0, 5);
+    const filteredNews = this.state.nytNews.slice(0, 6);
     //////////
     const filteredLocalNews = this.state.localNews.slice(0, 6);
     //////////
@@ -392,6 +419,12 @@ name:"Movies"
                     <FaRegNewspaper />
                   </ButtonToggle>{' '}
                   </div>
+
+                  <div className="d-inline-flex p-2">
+                  <ButtonToggle onClick={()=>this.getNYTNews()} color="primary">
+                    <FaRegNewspaper />
+                  </ButtonToggle>{' '}
+                  </div>
                   <br />
 
             <p style={{fontSize:'14px'}}></p>
@@ -420,7 +453,7 @@ name:"Movies"
                 {/* <Scroll> */}
                   {/* <TMDBMoviecardList movies={filteredMovies} /> */}
                   {/* <TMDBTVcardList tvShows={filteredTVshows} /> */}
-                  {/* <NYTcardList news={filteredNews} /> */}
+                  <NYTcardList news={filteredNews} />
                   <LnewscardList localNews={filteredLocalNews} />
                   <br />
                   

@@ -1,5 +1,6 @@
 import React from 'react';
 import './NYTcard.css';
+import altImage from '../../img/worldNews.png';
 // import ProgressBar from '../ProgressBar/ProgressBar';
 // import Hr from '../Hr';
 // contrast color generator
@@ -36,7 +37,13 @@ function contrast(colorHex, threshold = 128) {
   return rgbToYIQ(rgb) >= threshold ? '#000' : '#fff';
 }
 //////////////////////
-
+//////////////////////
+function dateMaker(publishedDate) {
+  let reformedDate = new Date(publishedDate)
+  let modifiedDate = reformedDate.toString().split(" ").slice(0, 5).join(" ");
+  return modifiedDate
+}
+///////////////////////
 
 
 const NYTcard = (props) => {
@@ -53,36 +60,34 @@ const NYTcard = (props) => {
   // const movieName = `${props.movieTitle}`.split(' ').join('-');
   // const movieLink = `https://www.themoviedb.org/movie/${props.MovieId}-${movieName}`
   // console.log(movieLink)
+  let newsDate = props.newsPublishedDate;
   return (
-    <div>
+    
 
-      <div className="grid-wrapper" style={{ backgroundColor: randColor }}>
-        <div className="box movie-image-wrapper">
-          <img style={{width:'300px',height:'auto'}} className='zone' src={props.newsImage} alt="newsImage" /></div>
-        <div className="box movie-text-wrapper" style={{ color: contrast(randColor) }}>
-          <div className='movie-title'>
-            <h2>{props.newsTitle}</h2>
-          <br />
-          
-            <br />
-            <h6>Published Date: {props.newsPublishedDate}</h6>
-            <h3>Abstract</h3>
-            <p>{props.newsAbstract}</p>
-            <hr style={{ height: '1px', border: 'none', color: '#fff', backgroundColor: '#fff', width: '80%', textAlign: 'center' }} />
+      <div className="card" style={{ backgroundColor: randColor }}>
+        
+          {props.newsImage ?
+            <img class="card-img-top"
 
+              src={props.newsImage}
 
-            <small>
-              <a href={props.newsURL} target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More information...</a>
-            </small>
+              alt="Current Img" />
+            :
+            <img class="card-img-top"
 
+              src={altImage}
 
+              alt="" />}
 
-          </div>
+        
+        <div className="card-body card-text-responsive" style={{ color: contrast(randColor) }}>
+        <p class="card-title" >{props.newsTitle}</p>
+        <a href={props.newsURL} class="card-link" target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More ...</a>
         </div>
-
+          
+        <div class="card-footer" style={{ color: contrast(randColor), fontSize: "14px", padding: "2px", textAlign: "center" }}>
+        <small >{dateMaker(newsDate)}</small>
       </div>
-
-
 
     </div>
   )
