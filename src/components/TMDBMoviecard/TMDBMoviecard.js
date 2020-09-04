@@ -1,6 +1,7 @@
 import React from 'react';
 import './TMDBMoviecard.css';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import altImage from '../../img/TMDBmovies.jpg';
 // import Hr from '../Hr';
 // contrast color generator
 function rgbToYIQ({ r, g, b }) {
@@ -54,48 +55,66 @@ const TMDBMoviecard = (props) => {
   const movieLink = `https://www.themoviedb.org/movie/${props.MovieId}-${movieName}`
   // console.log(movieLink)
   return (
-    <div>
+    
 
-      <div className="grid-wrapper" style={{ backgroundColor: randColor }}>
-        <div className="box movie-image-wrapper">
-          <img className='zone' src={`http://image.tmdb.org/t/p/w300${props.moviePosterPath}`} alt="movieImage" /></div>
-        <div className="box movie-text-wrapper" style={{ color: contrast(randColor) }}>
-          <div className='movie-title'>
-            <h2>{props.movieTitle}</h2>
+      <div className="card" style={{ backgroundColor: randColor }}>
+        {props.moviePosterPath ?
+          <img class="card-img-top"
+
+            src={`http://image.tmdb.org/t/p/w300${props.moviePosterPath}`}
+
+            alt="Current Img" />
+          :
+          <img class="card-img-top"
+
+            src={altImage}
+
+            alt="" />}
+
+        <div className="card-body card-text-responsive" style={{ color: contrast(randColor) }}>
+          {/* <p class="card-title" >{props.movieOverview}</p> */}
+          <a href={movieLink} class="card-link" target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More ...</a>
+          {/* <img className='zone' src={`http://image.tmdb.org/t/p/w300${props.moviePosterPath}`} alt="movieImage" /> */}
+          {/* <a href={movieLink} target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More information...</a> */}
+          {/* <h2 class="card-title" >{props.movieTitle}</h2> */}
+          {/* <div className='movie-title'> */}
+          {/* <h2>{props.movieTitle}</h2> */}
           <br />
-            <ul className='movie-text-items'>
-              <li className='chart' >
+          <ul className=''>
+            <li className='chart' >
               <ProgressBar valueEnd={props.voteAverage * 10} />
-              <div style={{fontWeight:'bold'}}>  User <br /> Score</div>
-                
-              </li>
-              <li style={{fontWeight:'bold'}}>Popularity: {props.popularity}</li>
+              <div style={{ fontWeight: 'bold' }}>  User <br /> Score</div>
 
-              {/* <li>Number of votes: {props.voteCount}</li> */}
-              {/* <li>Language: {props.movieLanguage}</li> */}
-              <li></li>
-            </ul>
-            <br />
+            </li>
+            <li style={{ fontWeight: 'bold' }}>Popularity: {props.popularity}</li>
+
+            <li></li>
+          </ul>
+          {/* <br />
             <h6>Release Date: {props.movieDate}</h6>
             <h3>Overview</h3>
             <p>{props.movieOverview}</p>
-            <hr style={{ height: '1px', border: 'none', color: '#fff', backgroundColor: '#fff', width: '80%', textAlign: 'center' }} />
+            <hr style={{ height: '1px', border: 'none', color: '#fff', backgroundColor: '#fff', width: '80%', textAlign: 'center' }} /> */}
 
 
-            <small>
+          {/* <small>
               <a href={movieLink} target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More information...</a>
-            </small>
+            </small> */}
 
 
 
-          </div>
+          {/* </div> */}
+        </div>
+
+        <div class="card-footer" style={{ color: contrast(randColor), fontSize: "14px", padding: "2px", textAlign: "center" }}>
+          <small >Release Date: {props.movieDate}</small>
         </div>
 
       </div>
 
 
 
-    </div>
+    
   )
 };
 
