@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "./Home.css";
-import Navbartop from '../Navbar/Navbartop';
+import Navbartop from "../Navbar/Navbartop";
 // import Card from '../Card';
 // import Hr from '../Hr';
 // import Divider from '../Divider';
@@ -13,14 +13,14 @@ import Banner from "../Banner";
 import Loading from "../Loading/Loading";
 import SearchBox from "../SearchBox";
 import CatcardList from "../Catcard/CatcardList";
-import Navcard from '../Navcard/Navcard';
-import Carddeck from '../Carddeck/Carddeck';
-import CarddeckList from '../Carddeck/CarddeckList';
+import Navcard from "../Navcard/Navcard";
+import Carddeck from "../Carddeck/Carddeck";
+import CarddeckList from "../Carddeck/CarddeckList";
 // import TMDBcard from '../TMDBcard/TMDBcard';
 import TMDBMoviecardList from "../TMDBMoviecard/TMDBMoviecardList";
 import TMDBTVcardList from "../TMDBTVcard/TMDBTVcardList";
 import NYTcardList from "../NYTcard/NYTcardList";
-import LnewscardList from '../Localnewscard/LnewscardList';
+import LnewscardList from "../Localnewscard/LnewscardList";
 import Socialcard from "../Socialcard/Socialcard";
 import Quotecard from "../Quotecard/Quotecard";
 import Geoposition from "../Geoposition/Geoposition";
@@ -30,11 +30,11 @@ import WidgetHeader from "../WidgetHeader/WidgetHeader";
 import Scroll from "../Scroll/Scroll";
 import { TMDBapi } from "../TMDBMoviecard/TMDBapi";
 import { NYTapi } from "../NYTcard/NYTapi";
-import { LnewsApi } from '../Localnewscard/LocalNewsapi';
+import { LnewsApi } from "../Localnewscard/LocalNewsapi";
 import { ButtonToggle } from "reactstrap";
 
 import { usePosition } from "use-position";
-
+import InterestList from "../InterestList/InterestList";
 // import Container from 'react-bootstrap/Container';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
@@ -61,35 +61,34 @@ class Home extends Component {
       localNews: [],
       quotes: [],
       ipInfo: {
-        city: '',
-        country: '',
-        ip: '',
+        city: "",
+        country: "",
+        ip: "",
         loc: {
-          lat: '',
-          long: ''
+          lat: "",
+          long: "",
         },
-        region: ''
+        region: "",
       },
-      widgetSearchRequestText: 'your interests',
-      widgetSearchRequestURL: ''
-
+      widgetSearchRequestText: "your interests",
+      widgetSearchRequestURL: "",
     };
   }
   /////////IP Info ///////////////////////
   async getIPinfo() {
     try {
       let ipInfoObj = {
-        loc: {}
+        loc: {},
       };
-      const ipInfoToken = '82197c9128c110';
+      const ipInfoToken = "82197c9128c110";
       let IPLink = `http://ipinfo.io/?token=${ipInfoToken}`;
       const response = await fetch(IPLink);
       const data = await response.json();
       let city = data.city;
       let country = data.country;
       let currentIP = data.ip;
-      let CurrentLatitude = data.loc.split(',')[0]
-      let CurrentLongitude = data.loc.split(',')[1]
+      let CurrentLatitude = data.loc.split(",")[0];
+      let CurrentLongitude = data.loc.split(",")[1];
       let region = data.region;
 
       ipInfoObj.city = city;
@@ -100,7 +99,7 @@ class Home extends Component {
       ipInfoObj.region = region;
 
       this.setState({
-        ipInfo: ipInfoObj
+        ipInfo: ipInfoObj,
       });
 
       // console.log('data',data)
@@ -111,111 +110,111 @@ class Home extends Component {
     } catch (err) {
       console.log("forecast ooooooops", err);
     }
-
-
   }
 
   ////////////////////////////////////////
-
 
   /////////Local News fetch Info ///////////////////////
 
   async getLocalNews() {
     try {
-      this.setState({ nytNews: [] })
-      this.setState({ localNews: [] })
-      this.setState({ movies: [] })
-      this.setState({ tvShows: [] })
+      this.setState({ nytNews: [] });
+      this.setState({ localNews: [] });
+      this.setState({ movies: [] });
+      this.setState({ tvShows: [] });
 
-
-      const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`);
+      const response = await fetch(
+        `https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`
+      );
       const data = await response.json();
 
       // console.log('Local News Api',data.articles)
-      this.setState({ localNews: data.articles, widgetSearchRequestText: "Local News", widgetSearchRequestURL: "Local News" })
-
-
+      this.setState({
+        localNews: data.articles,
+        widgetSearchRequestText: "Local News",
+        widgetSearchRequestURL: "Local News",
+      });
     } catch (err) {
       console.log("localnews ooooooops", err);
     }
-
-
   }
 
   ////////////////////////////////////////
   /////////World(NYT) News fetch Info ///////////////////////
   async getNYTNews() {
     try {
-      this.setState({ nytNews: [] })
-      this.setState({ localNews: [] })
-      this.setState({ movies: [] })
-      this.setState({ tvShows: [] })
+      this.setState({ nytNews: [] });
+      this.setState({ localNews: [] });
+      this.setState({ movies: [] });
+      this.setState({ tvShows: [] });
 
-      const response = await fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`);
+      const response = await fetch(
+        `https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`
+      );
       const data = await response.json();
 
       // console.log('Local News Api',data.articles)
-      this.setState({ nytNews: data.results, widgetSearchRequestText: "NYT News", widgetSearchRequestURL: "NYT News" })
-
-
+      this.setState({
+        nytNews: data.results,
+        widgetSearchRequestText: "NYT News",
+        widgetSearchRequestURL: "NYT News",
+      });
     } catch (err) {
       console.log("NYTnews ooooooops", err);
     }
-
-
   }
-
 
   //////////////////////////////////////////////////////
   /////////TMDB Movies fetch Info ///////////////////////
   async getTMDBMovies() {
     try {
-      this.setState({ movies: [] })
-      this.setState({ nytNews: [] })
-      this.setState({ localNews: [] })
-      this.setState({ tvShows: [] })
-      
+      this.setState({ movies: [] });
+      this.setState({ nytNews: [] });
+      this.setState({ localNews: [] });
+      this.setState({ tvShows: [] });
 
-      const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`);
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`
+      );
       const data = await response.json();
 
       // console.log('Local News Api',data.articles)
-      this.setState({ movies: data.results, widgetSearchRequestText: "TMDB Movies", widgetSearchRequestURL: "TMDB Movies" })
-
-
+      this.setState({
+        movies: data.results,
+        widgetSearchRequestText: "TMDB Movies",
+        widgetSearchRequestURL: "TMDB Movies",
+      });
     } catch (err) {
       console.log("TMDBMovies ooooooops", err);
     }
-
-
   }
-  
 
   //////////////////////////////////////////////////////
- /////////TMDB Series fetch Info ///////////////////////
- async getTMDBSeries() {
-  try {
-    this.setState({ tvShows: [] })
-    this.setState({ movies: [] })
-    this.setState({ nytNews: [] })
-    this.setState({ localNews: [] })
-    
+  /////////TMDB Series fetch Info ///////////////////////
+  async getTMDBSeries() {
+    try {
+      this.setState({ tvShows: [] });
+      this.setState({ movies: [] });
+      this.setState({ nytNews: [] });
+      this.setState({ localNews: [] });
 
-    const response = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`);
-    const data = await response.json();
+      const response = await fetch(
+        `https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`
+      );
+      const data = await response.json();
 
-    console.log('TV Shows Api',data.results)
-    this.setState({ tvShows: data.results, widgetSearchRequestText: "TMDB Series", widgetSearchRequestURL: "TMDB Series" })
-
-
-  } catch (err) {
-    console.log("TMDBSeries ooooooops", err);
+      console.log("TV Shows Api", data.results);
+      this.setState({
+        tvShows: data.results,
+        widgetSearchRequestText: "TMDB Series",
+        widgetSearchRequestURL: "TMDB Series",
+      });
+    } catch (err) {
+      console.log("TMDBSeries ooooooops", err);
+    }
   }
 
-
-}
-
-////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
 
   /////Geolocation for Popover Component////
 
@@ -247,12 +246,11 @@ class Home extends Component {
   }
   //////////////GET Current Weather////////////////////////
   async getCurrentWeather(latitude, longitude) {
-
     try {
       const KELVIN = 273.15;
 
       // const key = "f9034a6c94020d9f76bb28cdf288ea27"; //google
-      const key = '6c4640d7e71e9d9a0e3b30fc6a699f3e'; //yahooo
+      const key = "6c4640d7e71e9d9a0e3b30fc6a699f3e"; //yahooo
       let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
       const response = await fetch(api);
       const data = await response.json();
@@ -264,21 +262,18 @@ class Home extends Component {
       let weatherCity = data.name;
       let weatherCountry = data.sys.country;
 
-
       this.setState({
         weatherTemp,
         weatherFeelsLike,
         weatherDescription,
         weatherIconSrc,
         weatherCity,
-        weatherCountry
+        weatherCountry,
       });
     } catch (err) {
       console.log("current ooooooops", err);
     }
-
   }
-
 
   // console.log('weather kiri',data)
 
@@ -288,7 +283,7 @@ class Home extends Component {
     try {
       const KELVIN = 273.15;
       // const key = "f9034a6c94020d9f76bb28cdf288ea27"; //google
-      const key = '6c4640d7e71e9d9a0e3b30fc6a699f3e'; //yahooo
+      const key = "6c4640d7e71e9d9a0e3b30fc6a699f3e"; //yahooo
       let api = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${key}`;
       const response = await fetch(api);
       const data = await response.json();
@@ -302,15 +297,12 @@ class Home extends Component {
       // console.log('weatherForecastList',weatherForecastList)
 
       this.setState({
-        weatherForecastList
+        weatherForecastList,
       });
       // console.log('forecast',data.list)
-
     } catch (err) {
       console.log("forecast ooooooops", err);
     }
-
-
   }
   //////////////////////////////////////////////////////////
 
@@ -320,27 +312,9 @@ class Home extends Component {
     // this.getLocalNews()
 
     ////////////////////jsonplaceholder fetch////////////////////////
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(data => this.setState({ cats: data }));
-
-
-   
-
-    ////////////////////TMDB Series fetch////////////////////////
-    // fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`)
-
-    //   .then(response => response.json())
-    //   .then(data => this.setState({ tvShows: data.results }))
-
-    // .then(data=>console.log(data.results.slice(0,5)))
-    // console.log('kiri',this.state.tvShows)
-
-
-
-
-
-
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => this.setState({ cats: data }));
 
     ////////////////////Quotes fetch////////////////////////
     fetch(`https://type.fit/api/quotes`)
@@ -358,11 +332,11 @@ class Home extends Component {
     ////////////////ITEM TEST for Searching the subjects////////////////////////
     const itemsTest = [
       {
-        name: "Local News"
+        name: "Local News",
       },
       {
-        name: "Movies"
-      }
+        name: "Movies",
+      },
     ];
     /////////////////////////////////////////
     const filteredCats = this.state.cats.filter((cat) => {
@@ -389,51 +363,28 @@ class Home extends Component {
         <div>
           {/* <Navbartop /> */}
           <Loading />
-        </div>)
+        </div>
+      );
     } else {
-
       return (
         <Fragment>
-          {/* <Navbartop /> */}
-          {/* <div className="side-bar" style={{float:"right",marginTop:'20px'}}>
-          <Popoverbtn
-                    lat={this.state.userLatitude}
-                    long={this.state.userLongitude}
-                    weatherTemp={this.state.weatherTemp}
-                    weatherFeelsLike={this.state.weatherFeelsLike}
-                    weatherDescription={this.state.weatherDescription}
-                    weatherIconSrc={this.state.weatherIconSrc}
-                    weatherCity={this.state.weatherCity}
-                    weatherCountry={this.state.weatherCountry}
-                    weatherForecastList={this.state.weatherForecastList}
-                  />
-                   <br />
-                  <Socialcard />
-                  
-                  <ButtonToggle onClick={()=>this.getLocalNews()} color="primary">
-                    <FaRegNewspaper />
-                  </ButtonToggle>{' '}
-                  <br />
-                 
-                  // <button onClick={()=>this.getLocalNews()}>hi</button>
-                  </div> */}
           <div className="App container-fluid main-container">
-
             <main>
               <div className="row">
                 <div className="col-md-3 col-sm-12 col-12 padding-class">
                   <div>
-                    {/* <Banner bannerText={`Enter Your Banner Text`} /> */}
-
-
-                    {/* <Geoposition /> */}
-                    {/* <Weathercard /> */}
                     <Quotecard dailyQuote={randQuote} />
-
+                    <InterestList
+                      localNews={() => this.getLocalNews()}
+                      NYTNews={() => this.getNYTNews()}
+                      TMDBMovies={() => this.getTMDBMovies()}
+                      TMDBSeries={() => this.getTMDBSeries()}
+                    />
                     <div className="card">
                       <div className="card-header header-bg">
                         Quote of the day
-        </div>
+                      </div>
+
                       <div className="card-body">
                         <blockquote className="blockquote mb-0">
                           <div className="d-inline-flex p-2">
@@ -446,60 +397,29 @@ class Home extends Component {
                               weatherIconSrc={this.state.weatherIconSrc}
                               weatherCity={this.state.weatherCity}
                               weatherCountry={this.state.weatherCountry}
-                              weatherForecastList={this.state.weatherForecastList}
+                              weatherForecastList={
+                                this.state.weatherForecastList
+                              }
                             />
                           </div>
 
                           <div className="d-inline-flex p-2">
                             <Socialcard />
                           </div>
-                          <div><p onClick={() => this.getLocalNews()} style={{cursor:"pointer",fontSize:"14px"}}>Local News</p> </div>
-                          <div><p onClick={() => this.getNYTNews()} style={{cursor:"pointer",fontSize:"14px"}}>World News</p> </div>
-                          <div><p onClick={() => this.getTMDBMovies()} style={{cursor:"pointer",fontSize:"14px"}}>Movies</p> </div>
-                          <div><p onClick={() => this.getTMDBSeries()} style={{cursor:"pointer",fontSize:"14px"}}>TV Series</p> </div>
-                          
-                       
-            
+
                         
-                          <div className="d-inline-flex p-2">
-                            <ButtonToggle onClick={() => this.getLocalNews()} color="primary">
-                              <FaRegNewspaper />
-                            </ButtonToggle>{' '}
-                          </div>
-
-                          <div className="d-inline-flex p-2">
-                            <ButtonToggle onClick={() => this.getNYTNews()} color="primary">
-                              <FaRegNewspaper />
-                            </ButtonToggle>{' '}
-                          </div>
-
-                          <div className="d-inline-flex p-2">
-                            <ButtonToggle onClick={() => this.getTMDBMovies()} color="primary">
-                              <FaRegNewspaper />
-                            </ButtonToggle>{' '}
-                          </div>
-                          
-                          <div className="d-inline-flex p-2">
-                            <ButtonToggle onClick={() => this.getTMDBSeries()} color="primary">
-                              <FaRegNewspaper />
-                            </ButtonToggle>{' '}
-                          </div>
 
 
-                          
-                          <br />
-                          <br />
-
-
-
-                          
-                          <p style={{ fontSize: '14px' }}></p>
-                          <footer className="blockquote-footer"><cite title="Source Title" style={{ fontSize: '12px' }}></cite></footer>
+                          <p style={{ fontSize: "14px" }}></p>
+                          <footer className="blockquote-footer">
+                            <cite
+                              title="Source Title"
+                              style={{ fontSize: "12px" }}
+                            ></cite>
+                          </footer>
                         </blockquote>
                       </div>
                     </div>
-
-
 
                     <SearchBox onSearchChange={this.onSearchChange} />
                     <div className="pinned-apis">
@@ -509,10 +429,12 @@ class Home extends Component {
                 <Hr />
                 <Divider /> */}
                   </div>
-
                 </div>
                 <div className="col-md-9 col-sm-12 col-12 padding-class">
-                  <WidgetHeader widgetHeaderLink={`${this.state.widgetSearchRequestURL}`} widgetHeaderText={`Your search result about ${this.state.widgetSearchRequestText}`} />
+                  <WidgetHeader
+                    widgetHeaderLink={`${this.state.widgetSearchRequestURL}`}
+                    widgetHeaderText={`Your search result about ${this.state.widgetSearchRequestText}`}
+                  />
 
                   {/* <CarddeckList /> */}
 
@@ -525,7 +447,6 @@ class Home extends Component {
 
                   {/* <Navcard /> */}
 
-
                   {/* </Scroll> */}
                   {/* <Sidebar1 /> */}
                   {/* <Newsletter />
@@ -533,11 +454,7 @@ class Home extends Component {
               <Sidebar3 /> */}
 
                   <br />
-
-
                 </div>
-
-
               </div>
             </main>
           </div>
