@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+// import Card from 'react-bootstrap/Card';
 import "./Home.css";
 import Navbartop from "../Navbar/Navbartop";
 // import Card from '../Card';
@@ -423,7 +424,7 @@ class Home extends Component {
 
                     <SearchBox onSearchChange={this.onSearchChange} />
                     <div className="pinned-apis">
-                      <CatcardList cats={filteredCats} />
+                      {/* <CatcardList cats={filteredCats} /> */}
                     </div>
                     {/* <br />
                 <Hr />
@@ -457,6 +458,9 @@ class Home extends Component {
                 </div>
               </div>
             </main>
+            <footer className='footer' style={{color:"#007BFF", borderRadius: "5px",textAlign:"center"}}>
+        <div className='container'>Developed by: Aboozar Mojdeh</div>
+      </footer>
           </div>
         </Fragment>
       );
