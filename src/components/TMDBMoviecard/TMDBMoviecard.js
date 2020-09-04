@@ -57,13 +57,13 @@ const TMDBMoviecard = (props) => {
   return (
     
 
-      <div className="card" style={{ backgroundColor: randColor }}>
+      <div className="card hovereffect" style={{ backgroundColor: randColor }}>
         {props.moviePosterPath ?
-          <img class="card-img-top"
+          <a href={movieLink} target='_blank' rel="noopener noreferrer"><img class="card-img-top"
 
             src={`http://image.tmdb.org/t/p/w300${props.moviePosterPath}`}
 
-            alt="Current Img" />
+            alt={props.movieTitle} /></a>
           :
           <img class="card-img-top"
 
@@ -71,25 +71,26 @@ const TMDBMoviecard = (props) => {
 
             alt="" />}
 
-        <div className="card-body card-text-responsive" style={{ color: contrast(randColor) }}>
+        <div className="card-body" style={{ color: contrast(randColor) }}>
           {/* <p class="card-title" >{props.movieOverview}</p> */}
-          <a href={movieLink} class="card-link" target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More ...</a>
+          
           {/* <img className='zone' src={`http://image.tmdb.org/t/p/w300${props.moviePosterPath}`} alt="movieImage" /> */}
           {/* <a href={movieLink} target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More information...</a> */}
           {/* <h2 class="card-title" >{props.movieTitle}</h2> */}
           {/* <div className='movie-title'> */}
           {/* <h2>{props.movieTitle}</h2> */}
-          <br />
-          <ul className=''>
+          <ProgressBar valueEnd={props.voteAverage * 10} />
+          {/* <ul className='movie-score-box'>
             <li className='chart' >
-              <ProgressBar valueEnd={props.voteAverage * 10} />
-              <div style={{ fontWeight: 'bold' }}>  User <br /> Score</div>
+              <ProgressBar valueEnd={props.voteAverage * 10} /> */}
+              {/* <div style={{ fontWeight: 'normal' }}>  User <br /> Score</div> */}
 
-            </li>
-            <li style={{ fontWeight: 'bold' }}>Popularity: {props.popularity}</li>
+            {/* </li> */}
+            {/* <li style={{ fontWeight: 'normal' }}>Popularity: {props.popularity}</li> */}
 
-            <li></li>
-          </ul>
+            {/* <li></li> */}
+          {/* </ul> */}
+          <a href={movieLink} class="card-link card-text-responsive-movie" target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More info ...</a>
           {/* <br />
             <h6>Release Date: {props.movieDate}</h6>
             <h3>Overview</h3>
@@ -106,7 +107,7 @@ const TMDBMoviecard = (props) => {
           {/* </div> */}
         </div>
 
-        <div class="card-footer" style={{ color: contrast(randColor), fontSize: "14px", padding: "2px", textAlign: "center" }}>
+        <div class="card-footer" style={{ color: contrast(randColor), fontSize: "16px", padding: "2px", textAlign: "center" }}>
           <small >Release Date: {props.movieDate}</small>
         </div>
 

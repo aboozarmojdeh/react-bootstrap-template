@@ -1,6 +1,7 @@
 import React from 'react';
 import './TMDBTVcard.css';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import altImage from '../../img/TMDBmovies.jpg';
 // import Hr from '../Hr';
 // contrast color generator
 function rgbToYIQ({ r, g, b }) {
@@ -56,41 +57,61 @@ const TMDBTVcard = (props) => {
   return (
     <div>
 
-      <div className="grid-wrapper" style={{ backgroundColor: randColor }}>
-        <div className="box movie-image-wrapper">
-          <img className='zone' src={`http://image.tmdb.org/t/p/w300${props.tvShowPosterPath}`} alt="tvShowImage" /></div>
-        <div className="box movie-text-wrapper" style={{ color: contrast(randColor) }}>
-          <div className='movie-title'>
-            <h2>{props.tvShowTitle}</h2>
-          <br />
-            <ul className='movie-text-items'>
-              <li className='chart' >
-              <ProgressBar valueEnd={props.voteAverage * 10} />
-              <div style={{fontWeight:'bold'}}>  User <br /> Score</div>
-                
-              </li>
-              <li style={{fontWeight:'bold'}}>Popularity: {props.popularity}</li>
+      <div className="card hovereffect" style={{ backgroundColor: randColor }}>
+        {props.tvShowPosterPath ?
+          <a href={tvShowLink} target='_blank' rel="noopener noreferrer"><img class="card-img-top"
 
-              {/* <li>Number of votes: {props.voteCount}</li> */}
-              {/* <li>Language: {props.movieLanguage}</li> */}
-              <li></li>
-            </ul>
-            <br />
-            <h6>Release Date: {props.tvShowDate}</h6>
+            src={`http://image.tmdb.org/t/p/w300${props.tvShowPosterPath}`}
+
+            alt={props.tvShowTitle} /></a>
+          :
+          <img class="card-img-top"
+
+            src={altImage}
+
+            alt="" />}
+
+        <div className="card-body" style={{ color: contrast(randColor) }}>
+          {/* <p class="card-title" >{props.movieOverview}</p> */}
+
+          {/* <img className='zone' src={`http://image.tmdb.org/t/p/w300${props.moviePosterPath}`} alt="movieImage" /> */}
+          {/* <a href={movieLink} target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More information...</a> */}
+          {/* <h2 class="card-title" >{props.movieTitle}</h2> */}
+          {/* <div className='movie-title'> */}
+          {/* <h2>{props.movieTitle}</h2> */}
+          <ProgressBar valueEnd={props.voteAverage * 10} />
+          {/* <ul className='movie-score-box'>
+            <li className='chart' >
+              <ProgressBar valueEnd={props.voteAverage * 10} /> */}
+          {/* <div style={{ fontWeight: 'normal' }}>  User <br /> Score</div> */}
+
+          {/* </li> */}
+          {/* <li style={{ fontWeight: 'normal' }}>Popularity: {props.popularity}</li> */}
+
+          {/* <li></li> */}
+          {/* </ul> */}
+          <a href={tvShowLink} class="card-link card-text-responsive-series" target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More info ...</a>
+          {/* <br />
+            <h6>Release Date: {props.movieDate}</h6>
             <h3>Overview</h3>
-            <p>{props.tvShowOverview}</p>
-            <hr style={{ height: '1px', border: 'none', color: '#fff', backgroundColor: '#fff', width: '80%', textAlign: 'center' }} />
+            <p>{props.movieOverview}</p>
+            <hr style={{ height: '1px', border: 'none', color: '#fff', backgroundColor: '#fff', width: '80%', textAlign: 'center' }} /> */}
 
 
-            <small>
-              <a href={tvShowLink} target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More information...</a>
-            </small>
+          {/* <small>
+              <a href={movieLink} target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More information...</a>
+            </small> */}
 
 
 
-          </div>
+          {/* </div> */}
         </div>
 
+        <div class="card-footer" style={{ color: contrast(randColor), fontSize: "16px", padding: "2px", textAlign: "center" }}>
+          <small >Release Date: {props.tvShowTitle}</small>
+        </div>
+        {/* /////////////////// */}
+     
       </div>
 
 

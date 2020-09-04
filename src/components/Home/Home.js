@@ -125,6 +125,7 @@ class Home extends Component {
       this.setState({ nytNews: [] })
       this.setState({ localNews: [] })
       this.setState({ movies: [] })
+      this.setState({ tvShows: [] })
 
 
       const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`);
@@ -148,6 +149,7 @@ class Home extends Component {
       this.setState({ nytNews: [] })
       this.setState({ localNews: [] })
       this.setState({ movies: [] })
+      this.setState({ tvShows: [] })
 
       const response = await fetch(`https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`);
       const data = await response.json();
@@ -171,6 +173,7 @@ class Home extends Component {
       this.setState({ movies: [] })
       this.setState({ nytNews: [] })
       this.setState({ localNews: [] })
+      this.setState({ tvShows: [] })
       
 
       const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`);
@@ -186,15 +189,33 @@ class Home extends Component {
 
 
   }
-  // fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`)
-  //   .then(response => response.json())
-  //   .then(data => this.setState({ movies: data.results }))
-
-  // .then(data=>console.log(data.results.slice(0,5)))
-  // console.log(this.state.movies)
-  // console.log(this.state.cats)
+  
 
   //////////////////////////////////////////////////////
+ /////////TMDB Series fetch Info ///////////////////////
+ async getTMDBSeries() {
+  try {
+    this.setState({ tvShows: [] })
+    this.setState({ movies: [] })
+    this.setState({ nytNews: [] })
+    this.setState({ localNews: [] })
+    
+
+    const response = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`);
+    const data = await response.json();
+
+    console.log('TV Shows Api',data.results)
+    this.setState({ tvShows: data.results, widgetSearchRequestText: "TMDB Series", widgetSearchRequestURL: "TMDB Series" })
+
+
+  } catch (err) {
+    console.log("TMDBSeries ooooooops", err);
+  }
+
+
+}
+
+////////////////////////////////////////////////////////////////////
 
   /////Geolocation for Popover Component////
 
@@ -304,15 +325,7 @@ class Home extends Component {
       .then(data => this.setState({ cats: data }));
 
 
-    ////////////////////TMDB Movie fetch////////////////////////
-    // fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`)
-    //   .then(response => response.json())
-    //   .then(data => this.setState({ movies: data.results }))
-
-    // .then(data=>console.log(data.results.slice(0,5)))
-    // console.log(this.state.movies)
-    // console.log(this.state.cats)
-
+   
 
     ////////////////////TMDB Series fetch////////////////////////
     // fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`)
@@ -359,9 +372,9 @@ class Home extends Component {
     });
 
     /////////////
-    const filteredMovies = this.state.movies.slice(0, 6);
+    const filteredMovies = this.state.movies.slice(0, 8);
     ////////////
-    const filteredTVshows = this.state.tvShows.slice(0, 5);
+    const filteredTVshows = this.state.tvShows.slice(0, 8);
     /////////////
     const filteredNews = this.state.nytNews.slice(0, 6);
     //////////
@@ -457,6 +470,15 @@ class Home extends Component {
                               <FaRegNewspaper />
                             </ButtonToggle>{' '}
                           </div>
+                          
+                          <div className="d-inline-flex p-2">
+                            <ButtonToggle onClick={() => this.getTMDBSeries()} color="primary">
+                              <FaRegNewspaper />
+                            </ButtonToggle>{' '}
+                          </div>
+
+
+                          
                           <br />
                           <br />
 
@@ -488,7 +510,7 @@ class Home extends Component {
 
                   {/* <Scroll> */}
                   <TMDBMoviecardList movies={filteredMovies} />
-                  {/* <TMDBTVcardList tvShows={filteredTVshows} /> */}
+                  <TMDBTVcardList tvShows={filteredTVshows} />
                   <NYTcardList news={filteredNews} />
                   <LnewscardList localNews={filteredLocalNews} />
                   <br />

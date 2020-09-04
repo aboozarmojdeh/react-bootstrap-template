@@ -4,8 +4,8 @@ import TMDBMoviecard from './TMDBMoviecard';
 import WidgetHeader from '../WidgetHeader/WidgetHeader';
 
 const TMDBMoviecardList = ({ movies }) => {
-    let TMDBMovies1=movies.slice(0,3)
-    let TMDBMovies2=movies.slice(3,6)
+    let TMDBMovies1=movies.slice(0,4)
+    let TMDBMovies2=movies.slice(4,8)
 
     const TMDBMoviecardArray1 = TMDBMovies1.map((movie, i) => {
         return (

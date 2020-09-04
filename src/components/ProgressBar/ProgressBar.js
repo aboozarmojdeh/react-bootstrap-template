@@ -22,11 +22,8 @@ function Example(props) {
       <div style={{  }}>
         {/* <hr style={{ border: "2px solid #ddd" }} /> */}
         <div >
-          <div style={{ width: "80px",padding:'5px',margin:'auto'}}>{props.children}</div>
-          {/* <div style={{ width: "70%" }}> */}
-            {/* <h3 className="h5">{props.label}</h3> */}
-            {/* <p>{props.description}</p> */}
-          {/* </div> */}
+          <div style={{ width: "60px",padding:'5px',margin:'auto'}}>{props.children}</div>
+         
         </div>
       </div>
     );
@@ -42,27 +39,6 @@ const ProgressBar=(props)=>{
         <div>
    
    
-    {/* <Example>
-      <AnimatedProgressProvider
-        valueStart={0}
-        valueEnd={props.valueEnd}
-        duration={1.4}
-        easingFunction={easeQuadInOut}
-        repeat
-      >
-        {value => {
-          const roundedValue = Math.round(value);
-          return (
-            <CircularProgressbar
-              value={value}
-              text={`${roundedValue}%`}
-              
-              styles={buildStyles({ pathTransition: "none" })}
-            />
-          );
-        }}
-      </AnimatedProgressProvider>
-    </Example> */}
 
     <Example>
       <CircularProgressbar 
