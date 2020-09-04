@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 import TMDBTVcard from './TMDBTVcard';
 import WidgetHeader from '../WidgetHeader/WidgetHeader';
@@ -17,7 +17,7 @@ const TMDBTVcardList = ({ tvShows }) => {
             tvShowLanguage={tvShow.original_language}
             tvShowTitle={tvShow.title}
             tvShowOverview={tvShow.overview}
-            tvShowDate={tvShow.release_date}
+            tvShowDate={tvShow.first_air_date}
             tvShowPosterPath={tvShow.poster_path}
             tvShowBGPath={tvShow.backdrop_path}
             
@@ -48,7 +48,7 @@ const TMDBTVcardList = ({ tvShows }) => {
 
     
     return (
-        <div>
+        <Fragment>
        
         {/* <WidgetHeader  widgetHeaderLink={`https://www.nytimes.com/`} widgetHeaderText={`6 Latest Local News`}/> */}
         <div>
@@ -62,7 +62,7 @@ const TMDBTVcardList = ({ tvShows }) => {
             {TMDBTVcardArray2}
             </div>
         </div>
-    </div>
+        </Fragment>
 
 
     )

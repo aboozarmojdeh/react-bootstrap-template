@@ -55,7 +55,7 @@ const TMDBTVcard = (props) => {
   const tvShowLink = `https://www.themoviedb.org/tv/${props.tvShowId}-${tvShowName}`
   // console.log(movieLink)
   return (
-    <div>
+    
 
       <div className="card hovereffect" style={{ backgroundColor: randColor }}>
         {props.tvShowPosterPath ?
@@ -108,7 +108,7 @@ const TMDBTVcard = (props) => {
         </div>
 
         <div class="card-footer" style={{ color: contrast(randColor), fontSize: "16px", padding: "2px", textAlign: "center" }}>
-          <small >Release Date: {props.tvShowTitle}</small>
+          <small >Release Date: {props.tvShowDate}</small>
         </div>
         {/* /////////////////// */}
      
@@ -116,7 +116,7 @@ const TMDBTVcard = (props) => {
 
 
 
-    </div>
+    
   )
 };
 

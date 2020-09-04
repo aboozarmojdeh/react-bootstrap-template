@@ -453,6 +453,14 @@ class Home extends Component {
                           <div className="d-inline-flex p-2">
                             <Socialcard />
                           </div>
+                          <div><p onClick={() => this.getLocalNews()} style={{cursor:"pointer",fontSize:"14px"}}>Local News</p> </div>
+                          <div><p onClick={() => this.getNYTNews()} style={{cursor:"pointer",fontSize:"14px"}}>World News</p> </div>
+                          <div><p onClick={() => this.getTMDBMovies()} style={{cursor:"pointer",fontSize:"14px"}}>Movies</p> </div>
+                          <div><p onClick={() => this.getTMDBSeries()} style={{cursor:"pointer",fontSize:"14px"}}>TV Series</p> </div>
+                          
+                       
+            
+                        
                           <div className="d-inline-flex p-2">
                             <ButtonToggle onClick={() => this.getLocalNews()} color="primary">
                               <FaRegNewspaper />
