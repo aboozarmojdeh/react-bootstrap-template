@@ -14,7 +14,6 @@
 ##### API panel
 ##### holidays
 ##### worldometers.info
-##### https://github.com/javieraviles/covidAPI
 ##### trending all 3-5
 ##### trending music with sample play
 
