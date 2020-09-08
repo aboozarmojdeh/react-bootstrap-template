@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { LinkContainer } from "react-router-bootstrap";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -23,7 +23,7 @@ const Navbartop = (props) => {
   const toggleMainNavIconsHome3=()=>setTooltipOpenHome3(!tooltipOpenHome3);
 
   return (
-
+<Fragment>
 
     <Navbar bg="light" variant="light" expand="lg" sticky="top">
       <LinkContainer exact to="/">
@@ -99,7 +99,12 @@ const Navbartop = (props) => {
         </Nav>
         
       </Navbar.Collapse>
+      
     </Navbar>
+    <div className="container" style={{textAlign:"center"}}>
+    <a className="covid-19" href="https://coronavirus.jhu.edu/map.html" target="_blank" rel="noopener noreferrer">COVID-19 Updates</a>
+    </div>
+    </Fragment>
 
 
   )

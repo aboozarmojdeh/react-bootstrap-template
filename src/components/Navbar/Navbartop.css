@@ -45,3 +45,25 @@ a.top-nav-icons.nav-link:hover {
 .tooltip-css {
     opacity: 0.7;
 }
+
+
+ 
+    .covid-19 {
+        color: red !important;
+        background-color: yellow;
+        text-decoration: none;
+      }
+      
+      /* .covid-19:visited {
+        color: pink;
+        background-color: transparent;
+        text-decoration: none;
+      } */
+      
+      .covid-19:hover {
+        color: red;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+      
+      
