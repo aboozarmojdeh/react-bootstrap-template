@@ -1,6 +1,6 @@
 import React from 'react';
 import './LSportnewscard.css';
-import altImage from '../../img/localNews.jpg';
+import altImage from '../../img/sportNews.png';
 // import ProgressBar from '../ProgressBar/ProgressBar';
 // import Hr from '../Hr';
 // contrast color generator
@@ -73,7 +73,7 @@ const LSportnewscard = (props) => {
           alt="" />}
 
       <div class="card-body card-text-responsive" style={{ color: contrast(randColor) }}>
-        <p class="card-title" >{props.newsTitle}</p>
+      <p class="card-title" >{props.newsTitle}</p>
 
         <a href={props.newsURL} class="card-link" target='_blank' rel="noopener noreferrer" style={{ color: contrast(randColor) }}>More ...</a>
       </div>

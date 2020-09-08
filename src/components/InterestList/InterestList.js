@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InterestList=({localNews,NYTNews,TMDBMovies,TMDBSeries})=>{
+const InterestList=({localNews,localSportNews,NYTNews,TMDBMovies,TMDBSeries})=>{
     return(
        
              <div className="card">
@@ -11,6 +11,7 @@ const InterestList=({localNews,NYTNews,TMDBMovies,TMDBSeries})=>{
           <blockquote className="blockquote mb-0">
             
             <div><p onClick={localNews} style={{cursor:"pointer",fontSize:"14px"}}>Local News</p> </div>
+            <div><p onClick={localSportNews} style={{cursor:"pointer",fontSize:"14px"}}>Local Sport News</p> </div>
                           <div><p onClick={NYTNews} style={{cursor:"pointer",fontSize:"14px"}}>World News</p> </div>
                           <div><p onClick={TMDBMovies} style={{cursor:"pointer",fontSize:"14px"}}>Movies</p> </div>
                           <div><p onClick={TMDBSeries} style={{cursor:"pointer",fontSize:"14px"}}>TV Series</p> </div>

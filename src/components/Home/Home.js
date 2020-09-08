@@ -22,6 +22,7 @@ import TMDBMoviecardList from "../TMDBMoviecard/TMDBMoviecardList";
 import TMDBTVcardList from "../TMDBTVcard/TMDBTVcardList";
 import NYTcardList from "../NYTcard/NYTcardList";
 import LnewscardList from "../Localnewscard/LnewscardList";
+import LSportnewscardList from "../LSportnewscard/LSportnewscardList";
 import Socialcard from "../Socialcard/Socialcard";
 import Quotecard from "../Quotecard/Quotecard";
 import Geoposition from "../Geoposition/Geoposition";
@@ -32,6 +33,7 @@ import Scroll from "../Scroll/Scroll";
 import { TMDBapi } from "../TMDBMoviecard/TMDBapi";
 import { NYTapi } from "../NYTcard/NYTapi";
 import { LnewsApi } from "../Localnewscard/LocalNewsapi";
+import { LSportnewsApi } from "../LSportnewscard/LSportnewssapi";
 import { ButtonToggle } from "reactstrap";
 
 import { usePosition } from "use-position";
@@ -60,6 +62,7 @@ class Home extends Component {
       tvShows: [],
       nytNews: [],
       localNews: [],
+      localSportNews:[],
       quotes: [],
       ipInfo: {
         city: "",
@@ -114,7 +117,33 @@ class Home extends Component {
   }
 
   ////////////////////////////////////////
+/////////Local Sport News fetch Info ///////////////////////
 
+async getLocalSportNews() {
+  try {
+    this.setState({ nytNews: [] });
+    this.setState({ localNews: [] });
+    this.setState({ localSportNews: [] });
+    this.setState({ movies: [] });
+    this.setState({ tvShows: [] });
+
+    const response = await fetch(
+      `https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&category=sports&apiKey=${LSportnewsApi}`
+    );
+    const data = await response.json();
+
+    // console.log('Local News Api',data.articles)
+    this.setState({
+      localSportNews: data.articles,
+      widgetSearchRequestText: "Local Sport News",
+      widgetSearchRequestURL: "Local Sport News",
+    });
+  } catch (err) {
+    console.log("local sport news ooooooops", err);
+  }
+}
+
+////////////////////////////////////////
   /////////Local News fetch Info ///////////////////////
 
   async getLocalNews() {
@@ -123,6 +152,7 @@ class Home extends Component {
       this.setState({ localNews: [] });
       this.setState({ movies: [] });
       this.setState({ tvShows: [] });
+      this.setState({ localSportNews: [] });
 
       const response = await fetch(
         `https://newsapi.org/v2/top-headlines?country=${this.state.ipInfo.country.toLowerCase()}&apiKey=${LnewsApi}`
@@ -148,6 +178,7 @@ class Home extends Component {
       this.setState({ localNews: [] });
       this.setState({ movies: [] });
       this.setState({ tvShows: [] });
+      this.setState({ localSportNews: [] });
 
       const response = await fetch(
         `https://api.nytimes.com/svc/topstories/v2/world.json?api-key=${NYTapi}`
@@ -173,6 +204,7 @@ class Home extends Component {
       this.setState({ nytNews: [] });
       this.setState({ localNews: [] });
       this.setState({ tvShows: [] });
+      this.setState({ localSportNews: [] });
 
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/popular?api_key=${TMDBapi}&language=en-US&page=1`
@@ -198,6 +230,7 @@ class Home extends Component {
       this.setState({ movies: [] });
       this.setState({ nytNews: [] });
       this.setState({ localNews: [] });
+      this.setState({ localSportNews: [] });
 
       const response = await fetch(
         `https://api.themoviedb.org/3/tv/popular?api_key=${TMDBapi}&language=en-US&page=1`
@@ -355,6 +388,8 @@ class Home extends Component {
     //////////
     const filteredLocalNews = this.state.localNews.slice(0, 6);
     //////////
+    const filteredLocalSportNews = this.state.localSportNews.slice(0, 6);
+    //////////
     let randomNumber = Math.floor(Math.random() * 1644);
     const randQuote = this.state.quotes[randomNumber];
     /////////////
@@ -377,6 +412,7 @@ class Home extends Component {
                     <Quotecard dailyQuote={randQuote} />
                     <InterestList
                       localNews={() => this.getLocalNews()}
+                      localSportNews={()=>this.getLocalSportNews()}
                       NYTNews={() => this.getNYTNews()}
                       TMDBMovies={() => this.getTMDBMovies()}
                       TMDBSeries={() => this.getTMDBSeries()}
@@ -444,6 +480,7 @@ class Home extends Component {
                   <TMDBTVcardList tvShows={filteredTVshows} />
                   <NYTcardList news={filteredNews} />
                   <LnewscardList localNews={filteredLocalNews} />
+                  <LSportnewscardList localSportNews={filteredLocalSportNews} />
                   <br />
 
                   {/* <Navcard /> */}

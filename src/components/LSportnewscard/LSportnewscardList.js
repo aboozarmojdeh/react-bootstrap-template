@@ -3,10 +3,10 @@ import React from 'react';
 import LSportnewscard from './LSportnewscard';
 import WidgetHeader from '../WidgetHeader/WidgetHeader';
 
-const LSportnewscardList = ({ localNews }) => {
-    let localNews1=localNews.slice(0,3);
-    let localNews2=localNews.slice(3);
-    const localNewscardArray1 = localNews1.map((eachNews, i) => {
+const LSportnewscardList = ({ localSportNews }) => {
+    let localSportNews1=localSportNews.slice(0,3);
+    let localSportNews2=localSportNews.slice(3);
+    const localNewscardArray1 = localSportNews1.map((eachNews, i) => {
         return (
             <LSportnewscard 
             key={eachNews.url} 
@@ -20,7 +20,7 @@ const LSportnewscardList = ({ localNews }) => {
             />
         )
     });
-    const localNewscardArray2 = localNews2.map((eachNews, i) => {
+    const localNewscardArray2 = localSportNews2.map((eachNews, i) => {
         return (
             <LSportnewscard 
             key={eachNews.url} 
